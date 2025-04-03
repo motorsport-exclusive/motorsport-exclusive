@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Motorsport Source Sites</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <style>
+      body {
+        font-family: "Roboto", Arial, sans-serif;
+        background-color: #1a1d24;
+        color: #d9d9d9;
+        min-height: 100vh;
+        margin: 0;
+        padding: 2rem;
+      }
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        background: #2b303a;
+        padding: 2rem;
+        border-radius: 15px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      }
+      h1 {
+        background: linear-gradient(90deg, #e63946, #f1faee);
+        -webkit-background-clip: text;
+        color: transparent;
+        text-align: center;
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 2rem;
+      }
+      h3 {
+        color: #f1faee;
+        text-align: center;
+        font-size: 1.2rem;
+        margin-bottom: 1.5rem;
+        letter-spacing: 1px;
+      }
+      .source-list h2 {
+        color: #e63946;
+        font-size: 1.8rem;
+        font-weight: 700;
+        margin: 2rem 0 1rem;
+        text-transform: uppercase;
+      }
+      .source-section {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.5rem;
+      }
+      .source-item {
+        background: #21262d;
+        border-radius: 10px;
+        overflow: hidden;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border: 1px solid #3a404b;
+      }
+      .source-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(230, 57, 70, 0.2);
+      }
+      .source-header {
+        padding: 1rem;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: #343a46;
+      }
+      .source-header h2 {
+        color: #e63946;
+        font-size: 1.2rem;
+        font-weight: 700;
+        margin: 0;
+      }
+      .source-header i {
+        color: #f1faee;
+        font-size: 1.2rem;
+        transition: transform 0.3s ease;
+      }
+      .source-header.active i {
+        transform: rotate(180deg);
+      }
+      .source-details {
+        max-height: 0;
+        overflow: hidden;
+        padding: 0 1rem;
+        transition: max-height 0.3s ease-in-out;
+      }
+      .source-details.active {
+        max-height: 250px; /* Adjusted for content */
+        padding: 1rem;
+      }
+      .source-details p {
+        margin: 0.5rem 0;
+        font-size: 0.9rem;
+        color: #b0b8c4;
+        line-height: 1.4;
+      }
+      .source-details strong {
+        color: #f1faee;
+      }
+      .source-link {
+        color: #e63946;
+        text-decoration: none;
+        font-weight: 700;
+        transition: color 0.3s ease;
+      }
+      .source-link:hover {
+        color: #f1faee;
+      }
+      @media (max-width: 600px) {
+        .container {
+          padding: 1rem;
+        }
+        .source-section {
+          grid-template-columns: 1fr;
+        }
+        h1 {
+          font-size: 2rem;
+        }
+        h3 {
+          font-size: 1rem;
+        }
+        .source-list h2 {
+          font-size: 1.5rem;
+        }
+        .source-header h2 {
+          font-size: 1.1rem;
+        }
+        .source-details p {
+          font-size: 0.85rem;
+        }
+      }
+      .button-back {
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        z-index: 1000;
+      }
+
+      .back-button {
+        display: inline-block;
+        padding: 10px 20px;
+        color: white;
+        text-decoration: none;
+        border-radius: 8px;
+        font-size: 30px;
+        font-family: "Roboto", sans-serif;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        box-shadow: 0px 2px 5px rgba(233, 69, 96, 0.3);
+      }
+
+      .back-button:hover {
+        background-color: #c1354d;
+      }
+
+      .back-button:active {
+        background-color: #a12b41;
+        box-shadow: 0px 1px 3px rgba(233, 69, 96, 0.2);
+      }
+
+      /* Dynamic "More" styling */
+      .more-dynamic {
+        color: #e94560;
+        font-style: italic;
+        animation: pulse 2s infinite;
+      }
+
+      @keyframes pulse {
+        0% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.5;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .report-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 600px) {
+        .back-button {
+          padding: 8px 16px;
+          font-size: 16px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="button-back">
+      <a href="/reporterapp/reporter-web-app/index.html" class="back-button"
+        >🔙</a
+      >
+    </div>
+    <div class="container">
+      <h3>motorsport_exclusive</h3>
+      <h1>Motorsport Source Sites</h1>
+      <div class="source-list">
+        <!-- Official Sites Section -->
+        <h2>Official Sites</h2>
+        <div class="source-section official">
+          <!-- MotoGP.com -->
+          <div class="source-item">
+            <div class="source-header">
+              <h2>MotoGP.com</h2>
+              <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="source-details">
+              <p>
+                <strong>Info Available:</strong> Live streaming (VideoPass),
+                news, results, schedules, rider stats.
+              </p>
+              <p><strong>Races Covered:</strong> MotoGP, Moto2, Moto3.</p>
+              <p>
+                <strong>Use For:</strong> Official MotoGP live streams and
+                detailed race data.
+              </p>
+              <p>
+                <strong>Link:</strong>
+                <a
+                  href="https://www.motogp.com/"
+                  class="source-link"
+                  target="_blank"
+                  >motogp.com</a
+                >
+              </p>
+            </div>
+          </div>
+          <!-- FIA.com -->
+          <div class="source-item">
+            <div class="source-header">
+              <h2>FIA.com</h2>
+              <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="source-details">
+              <p>
+                <strong>Info Available:</strong> Regulations, official updates,
+                race schedules.
+              </p>
+              <p>
+                <strong>Races Covered:</strong> Formula 1, WEC (Le Mans),
+                Formula E, Rally.
+              </p>
+              <p>
+                <strong>Use For:</strong> Official rules and updates for
+                FIA-sanctioned events.
+              </p>
+              <p>
+                <strong>Link:</strong>
+                <a
+                  href="https://www.fia.com/"
+                  class="source-link"
+                  target="_blank"
+                  >fia.com</a
+                >
+              </p>
+            </div>
+          </div>
+          <!-- Formula1.com -->
+          <div class="source-item">
+            <div class="source-header">
+              <h2>Formula1.com</h2>
+              <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="source-details">
+              <p>
+                <strong>Info Available:</strong> Official news, live timing,
+                results, driver standings, team info.
+              </p>
+              <p><strong>Races Covered:</strong> Formula 1.</p>
+              <p>
+                <strong>Use For:</strong> Official Formula 1 data and live
+                timing.
+              </p>
+              <p>
+                <strong>Link:</strong>
+                <a
+                  href="https://www.formula1.com/"
+                  class="source-link"
+                  target="_blank"
+                  >formula1.com</a
+                >
+              </p>
+            </div>
+          </div>
+          <!-- NASCAR.com -->
+          <div class="source-item">
+            <div class="source-header">
+              <h2>NASCAR.com</h2>
+              <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="source-details">
+              <p>
+                <strong>Info Available:</strong> Official news, results,
+                schedules, driver stats, live updates.
+              </p>
+              <p>
+                <strong>Races Covered:</strong> NASCAR Cup Series, Xfinity
+                Series, Truck Series.
+              </p>
+              <p>
+                <strong>Use For:</strong> Official NASCAR data and race
+                information.
+              </p>
+              <p>
+                <strong>Link:</strong>
+                <a
+                  href="https://www.nascar.com/"
+                  class="source-link"
+                  target="_blank"
+                  >nascar.com</a
+                >
+              </p>
+            </div>
+          </div>
+          <!-- IMSA.com -->
+          <div class="source-item">
+            <div class="source-header">
+              <h2>IMSA.com</h2>
+              <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="source-details">
+              <p>
+                <strong>Info Available:</strong> Official news, results,
+                schedules, live timing for IMSA events.
+              </p>
+              <p>
+                <strong>Races Covered:</strong> IMSA WeatherTech SportsCar
+                Championship, including Le Mans context.
+              </p>
+              <p>
+                <strong>Use For:</strong> Official IMSA data and endurance
+                racing info.
+              </p>
+              <p>
+                <strong>Link:</strong>
+                <a
+                  href="https://www.imsa.com/"
+                  class="source-link"
+                  target="_blank"
+                  >imsa.com</a
+                >
+              </p>
+            </div>
+          </div>
+          <!-- WEC.com -->
+          <div class="source-item">
+            <div class="source-header">
+              <h2>WEC.com</h2>
+              <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="source-details">
+              <p>
+                <strong>Info Available:</strong> Official news, results,
+                schedules, live timing for WEC events.
+              </p>
+              <p>
+                <strong>Races Covered:</strong> FIA World Endurance
+                Championship, including Le Mans.
+              </p>
+              <p>
+                <strong>Use For:</strong> Official WEC data and endurance racing
+                info.
+              </p>
+              <p>
+                <strong>Link:</strong>
+                <a
+                  href="https://www.fiawec.com/"
+                  class="source-link"
+                  target="_blank"
+                  >fiawec.com</a
+                >
+              </p>
+            </div>
+          </div>
+          <!-- GTWorldChallenge.com -->
+          <div class="source-item">
+            <div class="source-header">
+              <h2>GTWorldChallenge.com</h2>
+              <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="source-details">
+              <p>
+                <strong>Info Available:</strong> Official news, results,
+                schedules, live streaming for GT events.
+              </p>
+              <p>
+                <strong>Races Covered:</strong> GT World Challenge Europe,
+                America, Asia.
+              </p>
+              <p>
+                <strong>Use For:</strong> Official GT racing data and live
+                streams.
+              </p>
+              <p>
+                <strong>Link:</strong>
+                <a
+                  href="https://www.gt-world-challenge.com/"
+                  class="source-link"
+                  target="_blank"
+                  >gt-world-challenge.com</a
+                >
+              </p>
+            </div>
+          </div>
+          <!-- IndyCar.com -->
+          <div class="source-item">
+            <div class="source-header">
+              <h2>IndyCar.com</h2>
+              <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="source-details">
+              <p>
+                <strong>Info Available:</strong> Official news, results,
+                schedules, driver stats, live timing.
+              </p>
+              <p><strong>Races Covered:</strong> IndyCar Series.</p>
+              <p>
+                <strong>Use For:</strong> Official IndyCar data and race info.
+              </p>
+              <p>
+                <strong>Link:</strong>
+                <a
+                  href="https://www.indycar.com/"
+                  class="source-link"
+                  target="_blank"
+                  >indycar.com</a
+                >
+              </p>
+            </div>
+          </div>
+          <!-- FormulaE.com -->
+          <div class="source-item">
+            <div class="source-header">
+              <h2>FormulaE.com</h2>
+              <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="source-details">
+              <p>
+                <strong>Info Available:</strong> Official news, results,
+                schedules, driver stats, live timing.
+              </p>
+              <p><strong>Races Covered:</strong> Formula E.</p>
+              <p>
+                <strong>Use For:</strong> Official Formula E data and electric
+                racing info.
+              </p>
+              <p>
+                <strong>Link:</strong>
+                <a
+                  href="https://www.fiaformulae.com/"
+                  class="source-link"
+                  target="_blank"
+                  >fiaformulae.com</a
+                >
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Unofficial Sites Section -->
+        <h2>Unofficial Sites</h2>
+        <div class="source-section unofficial">
+          <!-- Motorsport.com -->
+          <div class="source-item">
+            <div class="source-header">
+              <h2>Motorsport.com</h2>
+              <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="source-details">
+              <p>
+                <strong>Info Available:</strong> News, live updates, results,
+                photos, videos, driver stats.
+              </p>
+              <p>
+                <strong>Races Covered:</strong> Formula 1, MotoGP, NASCAR, Le
+                Mans, IndyCar, Rallying.
+              </p>
+              <p>
+                <strong>Use For:</strong> Comprehensive coverage across all
+                major motorsport events.
+              </p>
+              <p>
+                <strong>Link:</strong>
+                <a
+                  href="https://www.motorsport.com/"
+                  class="source-link"
+                  target="_blank"
+                  >motorsport.com</a
+                >
+              </p>
+            </div>
+          </div>
+          <!-- Autosport -->
+          <div class="source-item">
+            <div class="source-header">
+              <h2>Autosport</h2>
+              <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="source-details">
+              <p>
+                <strong>Info Available:</strong> News, analysis, results, live
+                text coverage.
+              </p>
+              <p>
+                <strong>Races Covered:</strong> Formula 1, MotoGP, WEC (Le
+                Mans), F2, IndyCar.
+              </p>
+              <p>
+                <strong>Use For:</strong> Detailed Formula 1 and MotoGP
+                reporting, Le Mans endurance info.
+              </p>
+              <p>
+                <strong>Link:</strong>
+                <a
+                  href="https://www.autosport.com/"
+                  class="source-link"
+                  target="_blank"
+                  >autosport.com</a
+                >
+              </p>
+            </div>
+          </div>
+          <!-- Racer.com -->
+          <div class="source-item">
+            <div class="source-header">
+              <h2>Racer.com</h2>
+              <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="source-details">
+              <p>
+                <strong>Info Available:</strong> News, results, driver
+                interviews.
+              </p>
+              <p>
+                <strong>Races Covered:</strong> IndyCar, NASCAR, Le Mans, some
+                Formula 1.
+              </p>
+              <p>
+                <strong>Use For:</strong> American motorsport focus, especially
+                IndyCar and Le Mans.
+              </p>
+              <p>
+                <strong>Link:</strong>
+                <a
+                  href="https://www.racer.com/"
+                  class="source-link"
+                  target="_blank"
+                  >racer.com</a
+                >
+              </p>
+            </div>
+          </div>
+          <!-- Sky Sports Motorsport -->
+          <div class="source-item">
+            <div class="source-header">
+              <h2>Sky Sports Motorsport</h2>
+              <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="source-details">
+              <p>
+                <strong>Info Available:</strong> Live updates, commentary,
+                highlights.
+              </p>
+              <p><strong>Races Covered:</strong> Formula 1, MotoGP.</p>
+              <p>
+                <strong>Use For:</strong> Live race commentary and Formula 1
+                insights.
+              </p>
+              <p>
+                <strong>Link:</strong>
+                <a
+                  href="https://www.skysports.com/motorsport"
+                  class="source-link"
+                  target="_blank"
+                  >skysports.com/motorsport</a
+                >
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Accordion for source details
+      const headers = document.querySelectorAll(".source-header");
+      headers.forEach((header) => {
+        header.addEventListener("click", () => {
+          const details = header.nextElementSibling;
+          const isActive = details.classList.contains("active");
+
+          // Close all other sections
+          document.querySelectorAll(".source-details").forEach((detail) => {
+            detail.classList.remove("active");
+            detail.previousElementSibling.classList.remove("active");
+          });
+
+          // Toggle current section
+          if (!isActive) {
+            details.classList.add("active");
+            header.classList.add("active");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
