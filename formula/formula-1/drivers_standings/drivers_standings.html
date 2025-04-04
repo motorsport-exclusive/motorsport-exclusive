@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>F1 Drivers Standings</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: gray;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .driver-container {
+            display: grid;
+            gap: 20px;
+            max-width: 600px;
+            margin: auto;
+        }
+        .driver-card {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .position-number {
+            font-size: 1.5rem;
+            margin-right: 15px;
+            font-weight: bold;
+            color: white;
+        }
+        .driver-photo {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 15px;
+            object-fit: cover; /* Ensures image fits nicely */
+        }
+        .driver-info {
+            flex-grow: 1;
+        }
+        .driver-info h2 {
+            margin: 0;
+            font-size: 1.2rem;
+            color: white;
+        }
+        .driver-info p {
+            margin: 2px 0;
+            color: white;
+        }
+        .driver-points {
+            background-color: #333;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        /* Team-specific backgrounds */
+        .mclaren { background-color: #ff8700; }
+        .redbull { background-color: #1e41ff; }
+        .mercedes { background-color: #00d2be; }
+        .williams { background-color: #005aff; }
+        .ferrari { background-color: #dc0000; }
+        .haas { background-color: #bdc3c7; }
+        .astonmartin { background-color: #006f62; }
+        .kicksauber { background-color: #900000; }
+        .racingbulls { background-color: #00293f; }
+        .alpine { background-color: #0090ff; }
+    </style>
+</head>
+<body>
+    <h1>2025 F1 Drivers' Championship Standings</h1>
+    <p style="text-align: center;">As of April 4, 2025 (After 2 Races)</p>
+    <div class="driver-container">
+        <div class="driver-card mclaren">
+            <div class="position-number">1</div>
+            <img src="drivers_pics/norris.avif" alt="Lando Norris" class="driver-photo">
+            <div class="driver-info">
+                <h2>Lando Norris</h2>
+                <p>McLaren</p>
+            </div>
+            <div class="driver-points">44 PTS</div>
+        </div>
+        <div class="driver-card redbull">
+            <div class="position-number">2</div>
+            <img src="drivers_pics/verstappen.avif" alt="Max Verstappen" class="driver-photo">
+            <div class="driver-info">
+                <h2>Max Verstappen</h2>
+                <p>Red Bull Racing</p>
+            </div>
+            <div class="driver-points">36 PTS</div>
+        </div>
+        <div class="driver-card mercedes">
+            <div class="position-number">3</div>
+            <img src="drivers_pics/russell.avif" alt="George Russell" class="driver-photo">
+            <div class="driver-info">
+                <h2>George Russell</h2>
+                <p>Mercedes</p>
+            </div>
+            <div class="driver-points">35 PTS</div>
+        </div>
+        <div class="driver-card mclaren">
+            <div class="position-number">4</div>
+            <img src="drivers_pics/piastri.avif" alt="Oscar Piastri" class="driver-photo">
+            <div class="driver-info">
+                <h2>Oscar Piastri</h2>
+                <p>McLaren</p>
+            </div>
+            <div class="driver-points">34 PTS</div>
+        </div>
+        <div class="driver-card mercedes">
+            <div class="position-number">5</div>
+            <img src="drivers_pics/antonelli.avif" alt="Kimi Antonelli" class="driver-photo">
+            <div class="driver-info">
+                <h2>Kimi Antonelli</h2>
+                <p>Mercedes</p>
+            </div>
+            <div class="driver-points">22 PTS</div>
+        </div>
+        <div class="driver-card williams">
+            <div class="position-number">6</div>
+            <img src="drivers_pics/albon.avif" alt="Alexander Albon" class="driver-photo">
+            <div class="driver-info">
+                <h2>Alexander Albon</h2>
+                <p>Williams</p>
+            </div>
+            <div class="driver-points">16 PTS</div>
+        </div>
+        <div class="driver-card haas">
+            <div class="position-number">7</div>
+            <img src="drivers_pics/ocon.avif" alt="Esteban Ocon" class="driver-photo">
+            <div class="driver-info">
+                <h2>Esteban Ocon</h2>
+                <p>Haas</p>
+            </div>
+            <div class="driver-points">10 PTS</div>
+        </div>
+        <div class="driver-card astonmartin">
+            <div class="position-number">8</div>
+            <img src="drivers_pics/stroll.avif" alt="Lance Stroll" class="driver-photo">
+            <div class="driver-info">
+                <h2>Lance Stroll</h2>
+                <p>Aston Martin</p>
+            </div>
+            <div class="driver-points">10 PTS</div>
+        </div>
+        <div class="driver-card ferrari">
+            <div class="position-number">9</div>
+            <img src="drivers_pics/hamilton.avif" alt="Lewis Hamilton" class="driver-photo">
+            <div class="driver-info">
+                <h2>Lewis Hamilton</h2>
+                <p>Ferrari</p>
+            </div>
+            <div class="driver-points">9 PTS</div>
+        </div>
+        <div class="driver-card ferrari">
+            <div class="position-number">10</div>
+            <img src="drivers_pics/leclerc.avif" alt="Charles Leclerc" class="driver-photo">
+            <div class="driver-info">
+                <h2>Charles Leclerc</h2>
+                <p>Ferrari</p>
+            </div>
+            <div class="driver-points">8 PTS</div>
+        </div>
+        <div class="driver-card kicksauber">
+            <div class="position-number">11</div>
+            <img src="drivers_pics/hulkenberg.avif" alt="Nico Hulkenberg" class="driver-photo">
+            <div class="driver-info">
+                <h2>Nico Hulkenberg</h2>
+                <p>Kick Sauber</p>
+            </div>
+            <div class="driver-points">6 PTS</div>
+        </div>
+        <div class="driver-card haas">
+            <div class="position-number">12</div>
+            <img src="drivers_pics/bearman.avif" alt="Oliver Bearman" class="driver-photo">
+            <div class="driver-info">
+                <h2>Oliver Bearman</h2>
+                <p>Haas</p>
+            </div>
+            <div class="driver-points">4 PTS</div>
+        </div>
+        <div class="driver-card redbull">
+            <div class="position-number">13</div>
+            <img src="drivers_pics/tsunoda.avif" alt="Yuki Tsunoda" class="driver-photo">
+            <div class="driver-info">
+                <h2>Yuki Tsunoda</h2>
+                <p>Red Bull Racing</p>
+            </div>
+            <div class="driver-points">3 PTS</div>
+        </div>
+        <div class="driver-card williams">
+            <div class="position-number">14</div>
+            <img src="drivers_pics/sainz.avif" alt="Carlos Sainz" class="driver-photo">
+            <div class="driver-info">
+                <h2>Carlos Sainz</h2>
+                <p>Williams</p>
+            </div>
+            <div class="driver-points">1 PTS</div>
+        </div>
+        <div class="driver-card racingbulls">
+            <div class="position-number">15</div>
+            <img src="drivers_pics/hadjar.avif" alt="Isack Hadjar" class="driver-photo">
+            <div class="driver-info">
+                <h2>Isack Hadjar</h2>
+                <p>Racing Bulls</p>
+            </div>
+            <div class="driver-points">0 PTS</div>
+        </div>
+        <div class="driver-card alpine">
+            <div class="position-number">16</div>
+            <img src="drivers_pics/gasly.avif" alt="Pierre Gasly" class="driver-photo">
+            <div class="driver-info">
+                <h2>Pierre Gasly</h2>
+                <p>Alpine</p>
+            </div>
+            <div class="driver-points">0 PTS</div>
+        </div>
+        <div class="driver-card racingbulls">
+            <div class="position-number">17</div>
+            <img src="drivers_pics/lawson-racing-bulls.avif" alt="Liam Lawson" class="driver-photo">
+            <div class="driver-info">
+                <h2>Liam Lawson</h2>
+                <p>Racing Bulls</p>
+            </div>
+            <div class="driver-points">0 PTS</div>
+        </div>
+        <div class="driver-card alpine">
+            <div class="position-number">18</div>
+            <img src="drivers_pics/doohan.avif" alt="Jack Doohan" class="driver-photo">
+            <div class="driver-info">
+                <h2>Jack Doohan</h2>
+                <p>Alpine</p>
+            </div>
+            <div class="driver-points">0 PTS</div>
+        </div>
+        <div class="driver-card kicksauber">
+            <div class="position-number">19</div>
+            <img src="drivers_pics/bortoleto.avif" alt="Gabriel Bortoleto" class="driver-photo">
+            <div class="driver-info">
+                <h2>Gabriel Bortoleto</h2>
+                <p>Kick Sauber</p>
+            </div>
+            <div class="driver-points">0 PTS</div>
+        </div>
+        <div class="driver-card astonmartin">
+            <div class="position-number">20</div>
+            <img src="drivers_pics/alonso.avif" alt="Fernando Alonso" class="driver-photo">
+            <div class="driver-info">
+                <h2>Fernando Alonso</h2>
+                <p>Aston Martin</p>
+            </div>
+            <div class="driver-points">0 PTS</div>
+        </div>
+        
+    </div>
+</body>
+</html>
