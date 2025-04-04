@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reporter Portal</title>
+    <link rel="stylesheet" href="css.css" />
+  </head>
+  <body>
+    <div class="app-container">
+      <header class="app-header">
+        <div class="logo-container">
+          <h1>
+            <a href="index.html" class="logo-text">Reporter Portal</a>
+          </h1>
+          <span class="user-status">Online</span>
+        </div>
+        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+      </header>
+
+      <nav class="category-links" id="menu" onmouseleave="closeMenu()">
+        <a href="menue/publishreport.html" class="nav-item">
+          <span class="nav-icon">✍️</span>
+          <span>Publish Report</span>
+        </a>
+        <a href="menue/upcomming.html" class="nav-item">
+          <span class="nav-icon">📅</span>
+          <span>Upcoming</span>
+        </a>
+        <a href="menue/source.html" class="nav-item">
+          <span class="nav-icon">📚</span>
+          <span>Sources</span>
+        </a>
+        <a href="menue/dashboard.html" class="nav-item">
+          <span class="nav-icon">📊</span>
+          <span>Dashboard</span>
+        </a>
+      </nav>
+
+      <main class="content-area">
+        <div class="welcome-card">
+          <h2>Welcome, Reporter</h2>
+          <p>Ready to file your next story? Access your tools below.</p>
+        </div>
+      </main>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

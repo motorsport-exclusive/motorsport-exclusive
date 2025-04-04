@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Publish Report</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap");
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Roboto", sans-serif;
+        background: #1a1a2e;
+        color: #e0e0e0;
+        min-height: 100vh;
+        padding: 2rem;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      h1 {
+        color: #e94560;
+        text-align: center;
+        margin-bottom: 2rem;
+      }
+
+      .report-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+      }
+
+      .report-type {
+        background: rgba(22, 33, 62, 0.95);
+        backdrop-filter: blur(10px);
+        border-radius: 12px;
+        padding: 1.5rem;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        text-align: center;
+        transition: transform 0.3s ease;
+        position: relative;
+      }
+
+      .report-type:hover {
+        transform: translateY(-5px);
+      }
+
+      .report-type h2 {
+        color: #fff;
+        margin-bottom: 1rem;
+      }
+
+      .report-box {
+        background: #16213e;
+        padding: 1rem;
+        border-radius: 8px;
+        margin-top: 1rem;
+        position: relative;
+      }
+
+      .report-box p {
+        color: #a0aec0;
+        margin-bottom: 0.5rem;
+      }
+
+      .report-link {
+        color: #e94560;
+        text-decoration: none;
+        font-weight: 700;
+        transition: color 0.3s ease;
+      }
+
+      .report-link:hover {
+        color: #ff6b6b;
+      }
+
+      .lock-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 12px;
+        z-index: 1;
+      }
+
+      .lock-overlay img {
+        width: 100px;
+        height: 100px;
+        opacity: 0.5;
+      }
+
+      .button-back {
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        z-index: 1000;
+      }
+
+      .back-button {
+        display: inline-block;
+        padding: 10px 20px;
+        color: white;
+        text-decoration: none;
+        border-radius: 8px;
+        font-size: 30px;
+        font-family: "Roboto", sans-serif;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        box-shadow: 0px 2px 5px rgba(233, 69, 96, 0.3);
+      }
+
+      .back-button:hover {
+        background-color: #c1354d;
+      }
+
+      .back-button:active {
+        background-color: #a12b41;
+        box-shadow: 0px 1px 3px rgba(233, 69, 96, 0.2);
+      }
+
+      /* Dynamic "More" styling */
+      .more-dynamic {
+        color: #e94560;
+        font-style: italic;
+        animation: pulse 2s infinite;
+      }
+
+      @keyframes pulse {
+        0% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.5;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .report-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 600px) {
+        .back-button {
+          padding: 8px 16px;
+          font-size: 16px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="button-back">
+      <a href="../index.html" class="back-button">⬅️</a>
+    </div>
+    <div class="container">
+      <h1>Publish Report</h1>
+      <div class="report-grid">
+        <!-- Daily News (Updated from Daily Brief) -->
+        <div class="report-type">
+          <h2>Daily News</h2>
+          <div class="report-box">
+            <p>
+              <a href="../dailybrief.html" class="report-link"
+                ><strong>Formula-1</strong></a
+              >
+            </p>
+            <p>----</p>
+            <p><a href="../index.html" class="report-link">Moto GP</a></p>
+            <p class="more-dynamic">More coming soon...</p>
+          </div>
+        </div>
+
+        <!-- Weekly Summary (Updated to match Daily News) -->
+        <div class="report-type">
+          <h2>Weekly Summary</h2>
+          <div class="report-box">
+            <p>
+              <a href="../forms/formlaweekly.html" class="report-link"
+                ><strong>Formula-1</strong></a
+              >
+            </p>
+            <p>----</p>
+            <p><a href="../index.html" class="report-link">Moto GP</a></p>
+            <p class="more-dynamic">More coming soon...</p>
+          </div>
+        </div>
+
+        <!-- Special Report (Updated to match Daily News) -->
+        <div class="report-type">
+          <h2>Special Report</h2>
+          <div class="report-box">
+            <p>
+              <a
+                href="/reporterapp/reporter-web-app/index.html"
+                class="report-link"
+                ><strong>Formula-1</strong></a
+              >
+            </p>
+            <p>----</p>
+            <p><a href="../index.html" class="report-link">Moto GP</a></p>
+            <p class="more-dynamic">More coming soon...</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // No additional JavaScript needed.
+    </script>
+  </body>
+</html>
