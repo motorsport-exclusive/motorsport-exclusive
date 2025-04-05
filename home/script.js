@@ -11,86 +11,34 @@ class MotorsportApp {
     this.articles = {
       formula: [
         {
-          id: "f1",
-          title: "Formula 1 Monaco Grand Prix Highlights",
-          date: "2025-03-20",
-          url: "https://motorsport.com/formula1/monaco",
+          id: "f3",
+          title: "Mercedes' George Russell Leads Team's Steady Start to 2025 Season",
+          date: "2025-04-04",
+          url: "https://www.reuters.com/sports/formula1/russell-leading-way-mercedes-keep-calm-carry-2025-04-04/",
         },
         {
-          id: "f2",
-          title: "Formula 1 Bahrain Season Opener",
-          date: "2025-03-01",
-          url: "https://motorsport.com/formula1/bahrain",
-        },
-      ],
-      nascar: [
-        {
-          id: "n1",
-          title: "Daytona 500 Shocker",
-          date: "2025-02-15",
-          url: "https://nascar.com/daytona-500",
+          id: "f4",
+          title: "Yuki Tsunoda Impresses in Red Bull Debut at Japanese Grand Prix",
+          date: "2025-04-04",
+          url: "https://www.reuters.com/sports/formula1/japans-tsunoda-hits-his-mark-first-outing-with-red-bull-2025-04-04/",
         },
         {
-          id: "n2",
-          title: "Kyle Busch Takes Texas Victory",
-          date: "2025-03-21",
-          url: "https://nascar.com/texas-race",
+          id: "f5",
+          title: "Jack Doohan Unharmed After High-Speed Crash During Japanese GP Practice",
+          date: "2025-04-05",
+          url: "https://www.news.com.au/sport/motorsport/formula-one/aussie-jack-doohan-suffers-huge-crash-in-f1-qualifying-in-japan/news-story/1cd05381ed365759f4ecde2df663605f",
         },
-      ],
-      indy: [
         {
-          id: "i1",
-          title: "Indy 500 Qualifying Results",
-          date: "2025-03-18",
-          url: "https://indycar.com/indy-500-qualifying",
+          id: "f6",
+          title: "Trackside Fires and Multiple Red Flags Disrupt Japanese GP Practice Sessions",
+          date: "2025-04-05",
+          url: "https://www.thesun.co.uk/sport/34266781/f1-japan-gp-suspended-fire/",
         },
-      ],
-      lemans: [
         {
-          id: "l1",
-          title: "24 Hours of Le Mans Preview",
-          date: "2025-03-23",
-          url: "https://lemans.org/preview-2025",
-        },
-      ],
-      superformula: [
-        {
-          id: "s1",
-          title: "Super Formula Season Opener",
-          date: "2025-03-10",
-          url: "https://superformula.net/opener",
-        },
-      ],
-      rally: [
-        {
-          id: "r1",
-          title: "WRC Rally Sweden Recap",
-          date: "2025-02-28",
-          url: "https://wrc.com/sweden-2025",
-        },
-      ],
-      motogp: [
-        {
-          id: "m1",
-          title: "MotoGP Qatar Grand Prix",
-          date: "2025-03-15",
-          url: "https://motogp.com/qatar-2025",
-        },
-      ],
-      imsa: [
-        {
-          id: "im1",
-          title: "IMSA Sebring 12 Hours",
-          date: "2025-03-17",
-          url: "https://imsa.com/sebring-2025",
-        },
-      ],
-      gt: [
-        {
-          id: "g1",
-          title: "GT World Challenge Kickoff",
-          date: "2025-03-19",
-          url: "https://gtworldchallenge.com/kickoff",
+          id: "f7",
+          title: "Lando Norris Tops Japanese Grand Prix Qualifying Sessions",
+          date: "2025-04-05",
+          url: "https://www.theguardian.com/sport/live/2025/apr/05/f1-japanese-gp-live-blog-updates-start-time-qualifying-suzuka-circuit",
         },
       ],
     };
@@ -194,7 +142,7 @@ class MotorsportApp {
 
   renderNews(news) {
     if (news.length === 0 && this.page === 1) {
-      this.newsContainer.innerHTML = "<p>No articles available for this category.</p>";
+      this.newsContainer.innerHTML = "<p>More RACES will be covered soon.</p>";
       return;
     }
 
