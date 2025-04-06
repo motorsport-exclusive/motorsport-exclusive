@@ -47,6 +47,7 @@ header h1 a {
   display: flex;
   gap: 1rem;
   align-items: center;
+  size: 10%;
 }
 
 .menu-toggle {
