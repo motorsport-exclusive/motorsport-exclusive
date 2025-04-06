@@ -7,9 +7,21 @@
     <link rel="stylesheet" href="formula-1.css" />
   </head>
   <body>
-    <div class="header">
-      <a href="../../index.html" class="home-link">Motorsport Exclusive</a>
-    </div>
+    <div class="menu-container">
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+          <span class="hamburger"><h1>☰</h1></span>
+  </div>
+  <nav class="sidebar" id="sidebar" aria-label="Main navigation">
+      <ul><br><br>
+          <li><a href="../../other/commingsoon.html">MotoGP</a></li>
+          <li><a href="../../other/commingsoon.html">GT Racing</a></li>
+          <li><a href="../../other/commingsoon.html">NASCAR</a></li>
+          <li><a href="../../other/commingsoon.html">Formula 1</a></li>
+          <li><a href="../../other/commingsoon.html">IndyCar</a></li>
+          <li><a href="../../other/commingsoon.html">Rally</a></li>
+          <li><a href="../../index.html">Home</a></li>
+      </ul>
+    </nav>
     <div class="image-gallery">
       <div class="image-item">
         <img src="f1standings.avif" alt="Image 1" class="portrait" />
@@ -25,4 +37,45 @@
       </div>
     </div>
   </body>
+  <script>
+    (function() {
+            const sidebar = document.getElementById('sidebar');
+            const menuToggle = document.getElementById('menuToggle');
+            let isOpen = false;
+
+            function toggleMenu() {
+                isOpen = !isOpen;
+                sidebar.style.left = isOpen ? '0' : '-250px';
+                menuToggle.setAttribute('aria-expanded', isOpen);
+            }
+
+            function closeMenu() {
+                if (isOpen) {
+                    isOpen = false;
+                    sidebar.style.left = '-250px';
+                    menuToggle.setAttribute('aria-expanded', 'false');
+                }
+            }
+
+            menuToggle.addEventListener('click', toggleMenu);
+
+            document.addEventListener('click', function(e) {
+                if (!sidebar.contains(e.target) && !menuToggle.contains(e.target)) {
+                    closeMenu();
+                }
+            });
+
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && isOpen) {
+                    closeMenu();
+                }
+            });
+
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768 && isOpen) {
+                    closeMenu();
+                }
+            });
+        })();
+  </script>
 </html>

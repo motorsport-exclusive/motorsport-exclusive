@@ -66,7 +66,7 @@
             transition: background-color 0.3s;
         }
         button:hover {
-            background-color: #b71c1c;
+            background-color: #ffffff00;
         }
         .content-wrapper {
             position: relative;
@@ -178,12 +178,116 @@
                 line-height: 1.6;
             }
         }
+        /*menue*/
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .menu-container {
+            background-color: #ffffff00;
+            padding: 10px 20px;
+            position: relative;
+        }
+
+        .menu-toggle {
+            background: #ffffff00;
+            color: white;
+            padding: 10px 15px;
+            cursor: pointer;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .menu-toggle .hamburger {
+            margin-right: 10px;
+        }
+
+        .menu-toggle p {
+            margin: 0;
+            font-weight: bold;
+        }
+
+        .sidebar {
+            width: 250px;
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: -250px;
+            transition: left 0.3s ease;
+            z-index: 999;
+        }
+
+        .sidebar.show {
+            left: 0;
+        }
+
+        .sidebar h3 {
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 1.5rem;
+        }
+
+        .sidebar ul {
+            list-style: none;
+        }
+
+        .sidebar li {
+            margin-bottom: 10px;
+        }
+
+        .sidebar a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            padding: 12px;
+            transition: background-color 0.2s ease;
+        }
+
+        .sidebar a:hover {
+            background-color: black;
+            color: white;
+        }
+
+        .main-content {
+            padding: 20px;
+            width: 100%;
+        }
+
+        @media (min-width: 769px) {
+            .sidebar {
+                left: -250px;
+            }
+        }
+        /*menue*/
     </style>
 </head>
 <body>
+    <!--menue--->
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+        <span class="hamburger"></span><h1>☰</h1>
+    </button>
+    <nav class="sidebar" id="sidebar" aria-label="Main navigation">
+        <ul><br><br>
+            <li><a href="../../../other/commingsoon.html">MotoGP</a></li>
+            <li><a href="../../../other/commingsoon.html">GT Racing</a></li>
+            <li><a href="../../../other/commingsoon.html">NASCAR</a></li>
+            <li><a href="../../../other/commingsoon.html">Formula 1</a></li>
+            <li><a href="../../../other/commingsoon.html">IndyCar</a></li>
+            <li><a href="../../../other/commingsoon.html">Rally</a></li>
+            <li><a href="../../../index.html">Home</a></li>
+        </ul>
+    </nav><!--menue--->
     <h1>F1 2025 Calendar</h1>
 
-    <!-- Next Race Box -->
+     Next Race Box 
     <div class="next-race-box">
         <img src="JapaneseGrandPrixSUZUKA.avif" alt="Suzuka Circuit">
         <div class="next-race-details">
@@ -474,6 +578,45 @@
             upcomingRaces.classList.add('active');
             pastRaces.classList.remove('active');
         });
+        (function() {
+            const sidebar = document.getElementById('sidebar');
+            const menuToggle = document.getElementById('menuToggle');
+            let isOpen = false;
+
+            function toggleMenu() {
+                isOpen = !isOpen;
+                sidebar.style.left = isOpen ? '0' : '-250px';
+                menuToggle.setAttribute('aria-expanded', isOpen);
+            }
+
+            function closeMenu() {
+                if (isOpen) {
+                    isOpen = false;
+                    sidebar.style.left = '-250px';
+                    menuToggle.setAttribute('aria-expanded', 'false');
+                }
+            }
+
+            menuToggle.addEventListener('click', toggleMenu);
+
+            document.addEventListener('click', function(e) {
+                if (!sidebar.contains(e.target) && !menuToggle.contains(e.target)) {
+                    closeMenu();
+                }
+            });
+
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && isOpen) {
+                    closeMenu();
+                }
+            });
+
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768 && isOpen) {
+                    closeMenu();
+                }
+            });
+        })();
     </script>
 </body>
 </html>

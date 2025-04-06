@@ -33,7 +33,7 @@
           style="
             height: 2cm;
             width: 2cm;
-            background-color: red;
+            background: linear-gradient(135deg, #ff416c, #ff4b2b);
             color: white;
             border: none;
             border-radius: 5px;
@@ -48,7 +48,7 @@
           style="
             height: 2cm;
             width: 2cm;
-            background-color: skyblue;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
             color: black;
             border: none;
             border-radius: 5px;
@@ -63,7 +63,7 @@
           style="
             height: 2cm;
             width: 2cm;
-            background-color: gray;
+            background: linear-gradient(135deg, #00c6ff, #0072ff);
             color: white;
             border: none;
             border-radius: 5px;
@@ -78,7 +78,7 @@
           style="
             height: 2cm;
             width: 2cm;
-            background-color: purple;
+            background: linear-gradient(135deg, #f7971e, #ffd200);
             color: white;
             border: none;
             border-radius: 5px;
@@ -92,26 +92,72 @@
 
     <!-- News Container -->
     <!-- Replace this section in your HTML with the updated news section -->
-
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+      <span class="hamburger">☰</span>
+  </button>
+  <nav class="sidebar" id="sidebar" aria-label="Main navigation">
+      <ul><br><br>
+          <li><a href="../other/commingsoon.html">MotoGP</a></li>
+          <li><a href="../other/commingsoon.html">GT Racing</a></li>
+          <li><a href="../other/commingsoon.html">NASCAR</a></li>
+          <li><a href="../other/commingsoon.html">Formula 1</a></li>
+          <li><a href="../other/commingsoon.html">IndyCar</a></li>
+          <li><a href="../other/commingsoon.html">Rally</a></li>
+          <li><a href="../index.html">Home</a></li>
+      </ul>
+  </nav>
 <!-- News Container -->
 <div class="news-container">
   <!-- F1 News -->
   <div class="news-box" data-category="F1">
-    F1: Leclerc wins thrilling Suzuka race ahead of Norris - April 5, 2025 <br />
+    F1: Haas unveils cherry blossom-themed livery for Japan - March 31, 2025 <br />
     <a href="https://example.com" style="color: aqua"><b></b></a>
   </div>
   <div class="news-box" data-category="F1">
-    F1: Verstappen suffers rare DNF in Japan after mechanical failure - April 5, 2025 <br />
+    F1: Practice sessions disrupted by four red flags in Suzuka - April 4, 2025 <br />
     <a href="https://example.com" style="color: aqua"><b></b></a>
   </div>
   <div class="news-box" data-category="F1">
-    F1: Russell clinches pole in rain-hit Suzuka qualifying - April 4, 2025 <br />
+    F1: Verstappen struggles with Red Bull car in FP2 - April 4, 2025 <br />
     <a href="https://example.com" style="color: aqua"><b></b></a>
   </div>
   <div class="news-box" data-category="F1">
-    <p style="color: red;">only F1 is covering now.</p<br />
+    F1: Doohan survives 185 mph crash in FP2 at Japan - April 4, 2025 <br />
     <a href="https://example.com" style="color: aqua"><b></b></a>
   </div>
+  <div class="news-box" data-category="F1">
+    F1: FIA investigates grass fires during FP2 at Suzuka - April 4, 2025 <br />
+    <a href="https://example.com" style="color: aqua"><b></b></a>
+  </div>
+  <div class="news-box" data-category="F1">
+    F1: Proposal to bring back V10 engines set to be rejected - April 4, 2025 <br />
+    <a href="https://example.com" style="color: aqua"><b></b></a>
+  </div>
+  <div class="news-box" data-category="F1">
+    F1: Tsunoda matches Verstappen’s pace in Red Bull debut - April 4, 2025 <br />
+    <a href="https://example.com" style="color: aqua"><b></b></a>
+  </div>
+  <div class="news-box" data-category="F1">
+    F1: Verstappen takes pole in dramatic Suzuka qualifying - April 5, 2025 <br />
+    <a href="https://example.com" style="color: aqua"><b></b></a>
+  </div>
+  <div class="news-box" data-category="F1">
+    F1: Sainz hit with three-place grid penalty for impeding Hamilton - April 5, 2025 <br />
+    <a href="https://example.com" style="color: aqua"><b></b></a>
+  </div>
+  <div class="news-box" data-category="F1">
+    F1: Bearman shines, reaches top-10 shootout in Suzuka - April 5, 2025 <br />
+    <a href="https://example.com" style="color: aqua"><b></b></a>
+  </div>
+  <div class="news-box" data-category="F1">
+    F1: Lawson outqualifies Tsunoda at Japanese Grand Prix - April 5, 2025 <br />
+    <a href="https://example.com" style="color: aqua"><b></b></a>
+  </div>
+  <div class="news-box" data-category="F1">
+    F1: Rain forecast threatens chaotic race day in Suzuka - April 5, 2025 <br />
+    <a href="https://example.com" style="color: aqua"><b></b></a>
+  </div>
+</div>
 
   <!-- F2 News -->
 
@@ -171,5 +217,44 @@
     });
 
     window.addEventListener("scroll", handleScroll);
+    (function() {
+            const sidebar = document.getElementById('sidebar');
+            const menuToggle = document.getElementById('menuToggle');
+            let isOpen = false;
+
+            function toggleMenu() {
+                isOpen = !isOpen;
+                sidebar.style.left = isOpen ? '0' : '-250px';
+                menuToggle.setAttribute('aria-expanded', isOpen);
+            }
+
+            function closeMenu() {
+                if (isOpen) {
+                    isOpen = false;
+                    sidebar.style.left = '-250px';
+                    menuToggle.setAttribute('aria-expanded', 'false');
+                }
+            }
+
+            menuToggle.addEventListener('click', toggleMenu);
+
+            document.addEventListener('click', function(e) {
+                if (!sidebar.contains(e.target) && !menuToggle.contains(e.target)) {
+                    closeMenu();
+                }
+            });
+
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && isOpen) {
+                    closeMenu();
+                }
+            });
+
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768 && isOpen) {
+                    closeMenu();
+                }
+            });
+        })();
   </script>
 </html>
