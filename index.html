@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Motorsport Exclusive</title>
+  <link rel="stylesheet" href="home/styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body>
+  <header>
+    <div class="header-container">
+      <h1><a href="index.html">Motorsport Exclusive</a></h1>
+      <div class="header-controls">
+        <button class="menu-toggle" aria-label="Toggle menu" title="Toggle menu" onclick="toggleMenu()">☰
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <nav class="category-links" id="menu">
+    <div class="category-grid">
+      <a href="formula/formula.html" data-category="formula">Formula</a>
+      <a href="other/commingsoon.html" data-category="nascar">NASCAR</a>
+      <a href="other/commingsoon.html" data-category="indy">Indy Car</a>
+      <a href="other/commingsoon.html" data-category="lemans">24 Le Mans</a>
+      <a href="other/commingsoon.html" data-category="superformula">Super Formula</a>
+      <a href="other/commingsoon.html" data-category="rally">Rallying</a>
+      <a href="other/commingsoon.html" data-category="motogp">Moto GP</a>
+      <a href="other/commingsoon.html" data-category="imsa">IMSA</a>
+      <a href="other/commingsoon.html" data-category="gt">GT Racing</a>
+      <a href="other/login.html" class="account-link">Account</a>
+    </div>
+  </nav>
+
+  <main class="content-wrapper">
+    <section class="latest-section">
+      <p><b>🏎️</b> <span class="live-indicator">Latest Updates</span></p>
+      <div class="filter-controls">
+        <select id="categoryFilter" aria-label="Filter news by category">
+          <option value="all">Over view</option>
+          <option value="formula">Formula</option>
+          <option value="nascar">NASCAR</option>
+          <option value="indy">Indy Car</option>
+          <option value="lemans">24 Le Mans</option>
+          <option value="superformula">Super Formula</option>
+          <option value="rally">Rallying</option>
+          <option value="motogp">Moto GP</option>
+          <option value="imsa">IMSA</option>
+          <option value="gt">GT Racing</option>
+        </select>
+      </div>
+    </section>
+
+    <div class="news-container" id="newsContent"></div>
+    <div class="loading-spinner" id="loadingSpinner">
+      <i class="fas fa-spinner fa-spin"></i>
+      <p>For more news, explore the menu.</p>
+    </div>
+  </main>
+
+  <section class="company-info">
+    <h2>ABOUT US</h2>
+    <p><b>Motorsport Exclusive – Real-time motorsport news, updates, and exclusive insights.</b></p>
+    <p>For more, read our <a href="other/t&c.html"><br>Terms and Conditions</a>.</p>
+    <div class="social-links">
+      <a href="https://x.com/motorsport_X" aria-label="X" style="text-decoration: none;">𝕏</a>
+      <a href="https://www.instagram.com/motorsport_exclusive/?hl=en" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.facebook.com/profile.php?id=61572796532524&mibextid=ZbWKwL" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+    </div>
+</section>
+
+  <footer>
+    <p>© <span id="year">2025</span> Motorsport Exclusive. All rights reserved.</p>
+  </footer>
+
+  <script src="home/script.js"></script>
+</body>
+</html>
