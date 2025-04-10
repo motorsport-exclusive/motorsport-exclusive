@@ -1,0 +1,186 @@
+/* General reset for body */
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap");
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #d6cfe1;
+}
+/* Header styling */
+.header {
+  background-color: red;
+  color: #fff;
+  padding: 20px;
+  text-align: left;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+}
+
+/* Link styling */
+.home-link {
+  text-decoration: none;
+  font-size: 20px;
+  color: #fff;
+  background-color: red;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: bold;
+  margin-right: 20px;
+}
+
+.home-link:hover {
+  background-color: #d5251a;
+}
+
+/* Flex container for image gallery */
+.image-gallery {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1400px;
+  margin: 100px auto;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+/* Each image item box */
+.image-item {
+  width: 30%; /* Increased width for larger images */
+  text-align: center;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  position: relative; /* Ensure the text stays over the image */
+}
+
+/* Portrait images style - larger and more prominent */
+.portrait {
+  width: 100%;
+  height: auto;
+}
+
+/* Style for the "View Full" link */
+.view-full {
+  display: block;
+  background-color: #007bff;
+  color: white;
+  padding: 15px;
+  text-decoration: none;
+  font-weight: bold;
+  text-align: center;
+  margin-top: -5px;
+  font-size: 18px;
+}
+
+.view-full:hover {
+  background-color: #0056b3;
+}
+
+/* Responsive adjustments for mobile devices */
+@media (max-width: 768px) {
+  .image-gallery {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .image-item {
+    width: 90%; /* Full-width on smaller screens */
+    margin-bottom: 20px;
+  }
+
+  .home-link {
+    font-size: 16px;
+    padding: 8px 16px;
+  }
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+.menu-container {
+  background-color: transparent;
+  padding: 10px 20px;
+  position: relative;
+}
+
+.menu-toggle {
+  background: transparent;
+  color: black;
+  padding: 10px 15px;
+  cursor: pointer;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu-toggle .hamburger {
+  margin-right: 10px;
+}
+
+.menu-toggle p {
+  margin: 0;
+  font-weight: bold;
+}
+
+.sidebar {
+  width: 250px;
+  background-color: #333;
+  color: white;
+  padding: 20px;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: -250px;
+  transition: left 0.3s ease;
+  z-index: 999;
+}
+
+.sidebar.show {
+  left: 0;
+}
+
+.sidebar h3 {
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.sidebar ul {
+  list-style: none;
+}
+
+.sidebar li {
+  margin-bottom: 10px;
+}
+
+.sidebar a {
+  color: white;
+  text-decoration: none;
+  display: block;
+  padding: 12px;
+  transition: background-color 0.2s ease;
+}
+
+.sidebar a:hover {
+  background-color: #444;
+  color: black;
+}
+
+.main-content {
+  padding: 20px;
+  width: 100%;
+}
+
+@media (min-width: 769px) {
+  .sidebar {
+      left: -250px;
+  }
+}
