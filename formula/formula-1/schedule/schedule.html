@@ -138,9 +138,84 @@
         position: static;
       }
     }
+    /* Sidebar Styles */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -250px;
+    width: 220px;
+    height: 100%;
+    background-color: #111;
+    color: white;
+    padding-top: 60px;
+    transition: left 0.3s ease-in-out;
+    z-index: 999;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar ul li {
+    padding: 12px 20px;
+}
+
+.sidebar ul li a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    transition: background 0.3s;
+}
+
+.sidebar ul li a:hover {
+    background-color: #333;
+}
+
+/* Toggle Button */
+.menu-toggle {
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    font-size: 24px;
+    background: none;
+    border: none;
+    color: gray;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.menu-toggle:focus {
+    outline: none;
+}
+
+/* Show Sidebar */
+.sidebar.active {
+    left: 0;
+}
+
   </style>
 </head>
 <body>
+<!-- Toggle Button -->
+<button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+  <span class="hamburger"><strong>☰</strong></span>
+</button>
+
+<!-- Sidebar Navigation -->
+<nav class="sidebar" id="sidebar" aria-label="Main navigation">
+  <ul>
+      <li><a href="../../../formula/formula.html">MotoGP</a></li>
+      <li><a href="../../../formula/formula.html">GT Racing</a></li>
+      <li><a href="../../../formula/formula.html">NASCAR</a></li>
+      <li><a href="../formula/formula.html">Formula 1</a></li>
+      <li><a href="../../../formula/formula.html">IndyCar</a></li>
+      <li><a href="../../../formula/formula.html">Rally</a></li>
+      <li><a href="../index.html">Home</a></li>
+  </ul>
+</nav>
+
   <h1>F1 2025 Race Schedule</h1>
 
   <div class="next-race-top">
@@ -204,6 +279,50 @@
 
     // Default show upcoming section
     toggleSection('upcoming');
+    (function() {
+            const sidebar = document.getElementById('sidebar');
+            const menuToggle = document.getElementById('menuToggle');
+            let isOpen = false;
+
+            function toggleMenu() {
+                isOpen = !isOpen;
+                sidebar.style.left = isOpen ? '0' : '-250px';
+                menuToggle.setAttribute('aria-expanded', isOpen);
+            }
+
+            function closeMenu() {
+                if (isOpen) {
+                    isOpen = false;
+                    sidebar.style.left = '-250px';
+                    menuToggle.setAttribute('aria-expanded', 'false');
+                }
+            }
+
+            menuToggle.addEventListener('click', toggleMenu);
+
+            document.addEventListener('click', function(e) {
+                if (!sidebar.contains(e.target) && !menuToggle.contains(e.target)) {
+                    closeMenu();
+                }
+            });
+
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && isOpen) {
+                    closeMenu();
+                }
+            });
+
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768 && isOpen) {
+                    closeMenu();
+                }
+            });
+        })();
+        // Sidebar Toggle Functionality
+document.getElementById('menuToggle').addEventListener('click', function () {
+    document.getElementById('sidebar').classList.toggle('active');
+});
+
   </script>
 </body>
 </html>
