@@ -6,95 +6,66 @@
     <title>Team Listing</title>
     <link rel="stylesheet" href="style.css">
     <style>
-         /*menue*/
-         * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        .menu-container {
-            background-color: #ffffff00;
-            padding: 10px 20px;
-            position: relative;
-        }
-
-        .menu-toggle {
-            background: #ffffff00;
-            color: white;
-            padding: 10px 15px;
-            cursor: pointer;
-            border: none;
-            border-radius: 4px;
-            font-size: 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .menu-toggle .hamburger {
-            margin-right: 10px;
-        }
-
-        .menu-toggle p {
-            margin: 0;
-            font-weight: bold;
-        }
-
-        .sidebar {
-            width: 250px;
-            background-color: #333;
-            color: white;
-            padding: 20px;
-            height: 100vh;
-            position: fixed;
-            top: 0;
-            left: -250px;
-            transition: left 0.3s ease;
-            z-index: 999;
-        }
-
-        .sidebar.show {
-            left: 0;
-        }
-
-        .sidebar h3 {
-            margin-bottom: 20px;
-            text-align: center;
-            font-size: 1.5rem;
-        }
-
-        .sidebar ul {
-            list-style: none;
-        }
-
-        .sidebar li {
-            margin-bottom: 10px;
-        }
-
-        .sidebar a {
-            color: white;
-            text-decoration: none;
-            display: block;
-            padding: 12px;
-            transition: background-color 0.2s ease;
-        }
-
-        .sidebar a:hover {
-            background-color: black;
-            color: white;
-        }
-
-        .main-content {
-            padding: 20px;
-            width: 100%;
-        }
-
-        @media (min-width: 769px) {
-            .sidebar {
-                left: -250px;
-            }
-        }
         /*menue*/
+           /* Sidebar Styles */
+/* Sidebar Styles */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -250px;
+    width: 220px;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding-top: 60px;
+    transition: left 0.3s ease-in-out;
+    z-index: 999;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar ul li {
+    padding: 12px 20px;
+}
+
+.sidebar ul li a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    transition: background 0.3s;
+}
+
+.sidebar ul li a:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Toggle Button */
+.menu-toggle {
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    font-size: 24px;
+    background: none;
+    border: none;
+    color: black;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.menu-toggle:focus {
+    outline: none;
+}
+
+/* Show Sidebar */
+.sidebar.active {
+    left: 0;
+}
+
+        
         body {
             font-family: Arial, sans-serif;
             background-color: gray;
@@ -159,123 +130,94 @@
     </style>
 </head>
 <body>
-    <!--menue--->
-    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
-        <span class="hamburger"></span><h1>☰</h1>
-    </button>
-    <nav class="sidebar" id="sidebar" aria-label="Main navigation">
-        <ul><br><br>
-            <li><a href="../../../other/commingsoon.html">MotoGP</a></li>
-            <li><a href="../../../other/commingsoon.html">GT Racing</a></li>
-            <li><a href="../../../other/commingsoon.html">NASCAR</a></li>
-            <li><a href="../../../formula/formula.html">Formula</a></li>
-            <li><a href="../../../other/commingsoon.html">IndyCar</a></li>
-            <li><a href="../../../other/commingsoon.html">Rally</a></li>
-            <li><a href="../../../index.html">Home</a></li>
-        </ul>
-    </nav>
-    <!--menue--->
-    <h1>Constructors</h1>
+    <!--menue-->
+<!-- Toggle Button -->
+<button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+    <span class="hamburger"><strong>☰</strong></span>
+  </button>
+  
+  <!-- Sidebar Navigation -->
+  <nav class="sidebar" id="sidebar" aria-label="Main navigation">
+    <ul>
+        <li><a href="../../../other/commingsoon.html">MotoGP</a></li>
+        <li><a href="../../../other/commingsoon.html">GT Racing</a></li>
+        <li><a href="../../../other/commingsoon.html">NASCAR</a></li>
+        <li><a href="../../formula.html">Formula</a></li>
+        <li><a href="../../../other/commingsoon.html">IndyCar</a></li>
+        <li><a href="../../../other/commingsoon.html">Rally</a></li>
+        <li><a href="../../../index.html">Home</a></li>
+    </ul>
+  </nav>
+
+    <!--menue-->
+    <h1 style="text-align: center;">Constructors</h1>
     <div class="team-container">
         <div class="team-card mclaren">
             <div class="team-number">1</div>
-            <div class="team-logo"><img src="logo-f1/McLaren.avif" alt="McLaren"></div>
+            <div class="team-logo"><img src="logo-f1/McLaren.png" alt="McLaren"></div>
             <div class="team-info"><h2>McLaren</h2><p>Lando Norris</p><p>Oscar Piastri</p></div>
             <div class="team-points">78 PTS</div>
         </div>
         <div class="team-card mercedes">
             <div class="team-number">2</div>
-            <div class="team-logo"><img src="logo-f1/mercedes.avif" alt="Mercedes"></div>
+            <div class="team-logo"><img src="logo-f1/mercedes.png" alt="Mercedes"></div>
             <div class="team-info"><h2>Mercedes</h2><p>George Russell</p><p>Andrea Kimi Antonelli</p></div>
             <div class="team-points">57 PTS</div>
         </div>
         <div class="team-card redbull">
             <div class="team-number">3</div>
-            <div class="team-logo"><img src="logo-f1/redbull.avif" alt="Red Bull Racing"></div>
+            <div class="team-logo"><img src="logo-f1/redbull.png" alt="Red Bull Racing"></div>
             <div class="team-info"><h2>Red Bull Racing</h2><p>Max Verstappen</p><p>Yuki Tsunoda</p></div>
             <div class="team-points">36 PTS</div>
         </div>
         <div class="team-card williams">
             <div class="team-number">4</div>
-            <div class="team-logo"><img src="logo-f1/williams.avif" alt="Williams"></div>
+            <div class="team-logo"><img src="logo-f1/williams.png" alt="Williams"></div>
             <div class="team-info"><h2>Williams</h2><p>Alexander Albon</p><p>Carlos Sainz Jr.</p></div>
             <div class="team-points">17 PTS</div>
         </div>
         <div class="team-card ferrari">
             <div class="team-number">5</div>
-            <div class="team-logo"><img src="logo-f1/ferrari.avif" alt="Ferrari"></div>
+            <div class="team-logo"><img src="logo-f1/ferrari.png" alt="Ferrari"></div>
             <div class="team-info"><h2>Ferrari</h2><p>Charles Leclerc</p><p>Lewis Hamilton</p></div>
             <div class="team-points">17 PTS</div>
         </div>
         <div class="team-card haas">
             <div class="team-number">6</div>
-            <div class="team-logo"><img src="logo-f1/hass.avif" alt="Haas"></div>
+            <div class="team-logo"><img src="logo-f1/hass.png" alt="Haas"></div>
             <div class="team-info"><h2>Haas</h2><p>Esteban Ocon</p><p>Oliver Bearman</p></div>
             <div class="team-points">14 PTS</div>
         </div>
         <div class="team-card astonmartin">
             <div class="team-number">7</div>
-            <div class="team-logo"><img src="logo-f1/astin-martin.avif" alt="Aston Martin"></div>
+            <div class="team-logo"><img src="logo-f1/astin-martin.png" alt="Aston Martin"></div>
             <div class="team-info"><h2>Aston Martin</h2><p>Lance Stroll</p><p>Fernando Alonso</p></div>
             <div class="team-points">10 PTS</div>
         </div>
         <div class="team-card kicksauber">
             <div class="team-number">8</div>
-            <div class="team-logo"><img src="logo-f1/stake.avif" alt="Kick Sauber"></div>
+            <div class="team-logo"><img src="logo-f1/stake.png" alt="Kick Sauber"></div>
             <div class="team-info"><h2>Kick Sauber</h2><p>Nico Hülkenberg</p><p>Gabriel Bortoleto</p></div>
             <div class="team-points">6 PTS</div>
         </div>
         <div class="team-card racingbulls">
             <div class="team-number">9</div>
-            <div class="team-logo"><img src="logo-f1/rb.avif" alt="Racing Bulls"></div>
+            <div class="team-logo"><img src="logo-f1/rb.png" alt="Racing Bulls"></div>
             <div class="team-info"><h2>Racing Bulls</h2><p>Liam Lawson</p><p>Isack Hadjar</p></div>
             <div class="team-points">3 PTS</div>
         </div>
         <div class="team-card alpine">
             <div class="team-number">10</div>
-            <div class="team-logo"><img src="logo-f1/alpine.avif" alt="Alpine"></div>
+            <div class="team-logo"><img src="logo-f1/alpine.png" alt="Alpine"></div>
             <div class="team-info"><h2>Alpine</h2><p>Pierre Gasly</p><p>Jack Doohan</p></div>
             <div class="team-points">0 PTS</div>
         </div>
     </div>
 </body>
-<script>        (function() {
-    const sidebar = document.getElementById('sidebar');
-    const menuToggle = document.getElementById('menuToggle');
-    let isOpen = false;
-
-    function toggleMenu() {
-        isOpen = !isOpen;
-        sidebar.style.left = isOpen ? '0' : '-250px';
-        menuToggle.setAttribute('aria-expanded', isOpen);
-    }
-
-    function closeMenu() {
-        if (isOpen) {
-            isOpen = false;
-            sidebar.style.left = '-250px';
-            menuToggle.setAttribute('aria-expanded', 'false');
-        }
-    }
-
-    menuToggle.addEventListener('click', toggleMenu);
-
-    document.addEventListener('click', function(e) {
-        if (!sidebar.contains(e.target) && !menuToggle.contains(e.target)) {
-            closeMenu();
-        }
-    });
-
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && isOpen) {
-            closeMenu();
-        }
-    });
-
-    window.addEventListener('resize', function() {
-        if (window.innerWidth > 768 && isOpen) {
-            closeMenu();
-        }
-    });
-})();</script>
+<script>        
+        // Sidebar Toggle Functionality
+document.getElementById('menuToggle').addEventListener('click', function () {
+    document.getElementById('sidebar').classList.toggle('active');
+});
+</script>
 </html>

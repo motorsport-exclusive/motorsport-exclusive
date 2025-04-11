@@ -1,3 +1,4 @@
+
 /* Reset and Base Styles */
 header {
   background-color: #000;
@@ -151,13 +152,6 @@ body {
 
 
 
-.header {
-  background-color: #222;
-  color: white;
-  padding: 1rem;
-  width: 100%;
-  text-align: center;
-}
 
 .menu-toggle {
   position: fixed;
@@ -186,7 +180,7 @@ body {
 
 .sidebar {
   width: 250px;
-  background-color: #333;
+  background-color: rgba(0, 0, 0, 0.5)  ;
   color: white;
   padding: 20px;
   height: 100vh;
