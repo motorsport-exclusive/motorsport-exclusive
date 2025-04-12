@@ -11,36 +11,73 @@ class MotorsportApp {
     this.articles = {
       formula: [
         {
-          id: "f3",
+          id: "n1",
           title: "Mercedes' George Russell Leads Team's Steady Start to 2025 Season",
           date: "2025-04-04",
-          url: "https://www.reuters.com/sports/formula1/russell-leading-way-mercedes-keep-calm-carry-2025-04-04/",
+          url: "https://motorsportexclusive.com/news/formula/f1/article-1",
         },
         {
-          id: "f4",
+          id: "n2",
           title: "Yuki Tsunoda Impresses in Red Bull Debut at Japanese Grand Prix",
           date: "2025-04-04",
-          url: "https://www.reuters.com/sports/formula1/japans-tsunoda-hits-his-mark-first-outing-with-red-bull-2025-04-04/",
+          url: "https://motorsportexclusive.com/news/formula/f1/article-2",
         },
         {
-          id: "f5",
+          id: "n3",
           title: "Jack Doohan Unharmed After High-Speed Crash During Japanese GP Practice",
           date: "2025-04-05",
-          url: "https://www.news.com.au/sport/motorsport/formula-one/aussie-jack-doohan-suffers-huge-crash-in-f1-qualifying-in-japan/news-story/1cd05381ed365759f4ecde2df663605f",
+          url: "https://motorsportexclusive.com/news/formula/f1/article-3",
         },
         {
-          id: "f6",
+          id: "n4",
           title: "Trackside Fires and Multiple Red Flags Disrupt Japanese GP Practice Sessions",
           date: "2025-04-05",
-          url: "https://www.thesun.co.uk/sport/34266781/f1-japan-gp-suspended-fire/",
+          url: "https://motorsportexclusive.com/news/formula/f1/article-4",
         },
         {
-          id: "f7",
+          id: "n5",
           title: "Lando Norris Tops Japanese Grand Prix Qualifying Sessions",
           date: "2025-04-05",
-          url: "https://www.theguardian.com/sport/live/2025/apr/05/f1-japanese-gp-live-blog-updates-start-time-qualifying-suzuka-circuit",
+          url: "https://motorsportexclusive.com/news/formula/f1/article-5",
+        },
+        {
+          id: "n6",
+          title: "Norris Tops Bahrain FP1 with Blistering Lap",
+          date: "2025-04-11",
+          url: "https://motorsportexclusive.com/news/formula/f1/article-6",
+        },
+        {
+          id: "n7",
+          title: "Gasly Stuns with P2 in Bahrain FP1",
+          date: "2025-04-11",
+          url: "https://motorsportexclusive.com/news/formula/f1/article-7",
+        },
+        {
+          id: "n8",
+          title: "Hamilton Takes P3 in Bahrain FP1",
+          date: "2025-04-11",
+          url: "https://motorsportexclusive.com/news/formula/f1/article-8",
+        },
+        {
+          id: "n9",
+          title: "Rookies Shine in Bahrain FP1",
+          date: "2025-04-11",
+          url: "https://motorsportexclusive.com/news/formula/f1/article-9",
+        },
+        {
+          id: "n10",
+          title: "Antonelli Hits Trouble in Bahrain FP1",
+          date: "2025-04-11",
+          url: "https://motorsportexclusive.com/news/formula/f1/article-10",
+        },
+        {
+          id: "n11",
+          title: "Williams Fined €7,500 in Bahrain FP1",
+          date: "2025-04-11",
+          url: "https://motorsportexclusive.com/news/formula/f1/article-11",
         },
       ],
+      
     };
 
     this.init();
