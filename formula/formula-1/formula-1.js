@@ -37,3 +37,4 @@
       }
   });
 })();
+window.location.reload(true);
