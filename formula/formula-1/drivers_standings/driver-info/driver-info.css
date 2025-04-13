@@ -1,0 +1,346 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #1a1a1a, #2c3e50); /* Dark, sleek motorsport base */
+  color: #e0e0e0; /* Light text for contrast */
+  padding: 20px;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Racing-Inspired Background */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    /* Checkered flag pattern */
+    linear-gradient(45deg, #000 25%, transparent 25%, transparent 75%, #000 75%, #000),
+    linear-gradient(45deg, #000 25%, transparent 25%, transparent 75%, #000 75%, #000),
+    /* Base gradient */
+    radial-gradient(circle at 50% 50%, rgba(0, 255, 255, 0.15), transparent 70%);
+  background-size: 40px 40px, 40px 40px, 100% 100%;
+  opacity: 0.3;
+  z-index: -1;
+  animation: bgPulse 15s infinite alternate ease-in-out;
+}
+
+/* Animated Speed Streaks */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 0, 255, 0.2), transparent);
+  opacity: 0.5;
+  z-index: -1;
+  animation: streak 5s infinite linear;
+}
+
+@keyframes bgPulse {
+  0% { opacity: 0.3; transform: scale(1); }
+  100% { opacity: 0.5; transform: scale(1.1); }
+}
+
+@keyframes streak {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+  background: linear-gradient(180deg, rgba(30, 30, 30, 0.95), rgba(50, 50, 50, 0.9));
+  padding: 40px 20px;
+  border-radius: 20px;
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.3); /* Cyan glow */
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease-in-out;
+}
+
+.container:hover {
+  box-shadow: 0 0 40px rgba(255, 0, 255, 0.4); /* Magenta glow on hover */
+}
+
+/* Animated Background Effect */
+.container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, rgba(255, 0, 0, 0.1), rgba(0, 255, 255, 0.1));
+  opacity: 0.7;
+  z-index: -1;
+  animation: subtlePulse 8s infinite alternate;
+}
+
+@keyframes subtlePulse {
+  0% { opacity: 0.7; transform: scale(1); }
+  100% { opacity: 0.9; transform: scale(1.05); }
+}
+
+/* Top Driver Styling */
+.top-driver {
+  text-align: center;
+  margin-bottom: 30px;
+  position: relative;
+  animation: slideIn 1.2s ease-out;
+}
+
+@keyframes slideIn {
+  from { transform: translateY(-40px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.top-driver img {
+  width: 220px;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 50%;
+  box-shadow: 0 8px 20px rgba(255, 0, 0, 0.5), 0 8px 20px rgba(0, 255, 255, 0.5);
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.top-driver img:hover {
+  transform: scale(1.15) rotate(5deg);
+  box-shadow: 0 12px 30px rgba(255, 0, 255, 0.6), 0 12px 30px rgba(0, 255, 0, 0.6); /* Magenta and neon green glow */
+}
+
+/* Driver Info */
+.driver-details {
+  text-align: center;
+  border: 3px solid rgba(0, 255, 255, 0.2); /* Cyan border */
+  padding: 25px;
+  margin-bottom: 40px;
+  border-radius: 15px;
+  background: linear-gradient(135deg, rgba(40, 40, 40, 0.9), rgba(60, 60, 60, 0.9));
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  animation: fadeInUp 1.4s ease-out;
+}
+
+.driver-details:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 10px 25px rgba(255, 0, 255, 0.4); /* Magenta shadow on hover */
+  border-color: rgba(255, 0, 255, 0.3); /* Magenta border on hover */
+}
+
+@keyframes fadeInUp {
+  from { transform: translateY(25px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.driver-details h2 {
+  font-size: 30px;
+  margin-bottom: 15px;
+  color: #ff007a; /* Vibrant magenta */
+  text-transform: uppercase;
+  position: relative;
+  display: inline-block;
+}
+
+.driver-details h2::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(to right, #ff007a, #00ffcc); /* Magenta to cyan */
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+
+.driver-details h2:hover::after {
+  transform: scaleX(1);
+}
+
+.driver-details p {
+  font-size: 16px;
+  color: #b0b0b0; /* Light gray for readability */
+  line-height: 1.8;
+  max-width: 850px;
+  margin: 0 auto;
+  white-space: pre-line;
+}
+
+/* Improved Gallery */
+.gallery {
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  gap: 12px;
+  padding: 25px;
+  background: linear-gradient(180deg, rgba(30, 30, 30, 0.95), rgba(50, 50, 50, 0.9));
+  border-radius: 15px;
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.3); /* Cyan glow */
+  position: relative;
+  overflow: hidden;
+}
+
+.gallery::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, rgba(255, 0, 0, 0.1), rgba(0, 255, 255, 0.1));
+  opacity: 0.7;
+  z-index: -1;
+  animation: subtlePulse 8s infinite alternate;
+}
+
+.gallery a {
+  display: block;
+  position: relative;
+  perspective: 1000px;
+  transition: transform 0.4s ease;
+}
+
+.gallery a:hover {
+  transform: translateY(-8px);
+}
+
+.gallery-img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 12px;
+  filter: grayscale(100%) brightness(0.8); /* Slightly less grayscale for vibrancy */
+  transition: all 0.5s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  animation: galleryLoad 0.8s ease-out forwards;
+  opacity: 0;
+}
+
+/* Staggered Load Animation */
+.gallery-img:nth-child(1) { animation-delay: 0.1s; }
+.gallery-img:nth-child(2) { animation-delay: 0.15s; }
+.gallery-img:nth-child(3) { animation-delay: 0.2s; }
+.gallery-img:nth-child(4) { animation-delay: 0.25s; }
+.gallery-img:nth-child(5) { animation-delay: 0.3s; }
+.gallery-img:nth-child(6) { animation-delay: 0.35s; }
+.gallery-img:nth-child(7) { animation-delay: 0.4s; }
+.gallery-img:nth-child(8) { animation-delay: 0.45s; }
+.gallery-img:nth-child(9) { animation-delay: 0.5s; }
+.gallery-img:nth-child(10) { animation-delay: 0.55s; }
+.gallery-img:nth-child(11) { animation-delay: 0.6s; }
+.gallery-img:nth-child(12) { animation-delay: 0.65s; }
+.gallery-img:nth-child(13) { animation-delay: 0.7s; }
+.gallery-img:nth-child(14) { animation-delay: 0.75s; }
+.gallery-img:nth-child(15) { animation-delay: 0.8s; }
+.gallery-img:nth-child(16) { animation-delay: 0.85s; }
+.gallery-img:nth-child(17) { animation-delay: 0.9s; }
+.gallery-img:nth-child(18) { animation-delay: 0.95s; }
+.gallery-img:nth-child(19) { animation-delay: 1s; }
+.gallery-img:nth-child(20) { animation-delay: 1.05s; }
+
+@keyframes galleryLoad {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.gallery-img.same-as-top {
+  filter: none;
+  box-shadow: 0 6px 18px rgba(255, 0, 0, 0.6), 0 6px 18px rgba(0, 255, 255, 0.6);
+  transform: scale(1.05);
+}
+
+.gallery-img:not(.same-as-top):hover {
+  filter: none;
+  transform: scale(1.15) rotateX(8deg);
+  box-shadow: 0 10px 25px rgba(0, 255, 0, 0.6); /* Neon green glow */
+  z-index: 2;
+}
+
+/* Name Overlay */
+.gallery a::after {
+  content: attr(data-name);
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%) translateY(25px);
+  background: linear-gradient(45deg, #ff007a, #00ffcc); /* Magenta to cyan */
+  color: #fff;
+  padding: 6px 18px;
+  border-radius: 15px;
+  font-size: 15px;
+  font-weight: bold;
+  text-transform: uppercase;
+  opacity: 0;
+  transition: all 0.4s ease;
+  pointer-events: none;
+  white-space: nowrap;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.gallery a:hover::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Responsive Layout */
+@media (max-width: 768px) {
+  .top-driver img {
+    width: 150px;
+    height: 150px;
+  }
+
+  .driver-details h2 {
+    font-size: 24px;
+  }
+
+  .driver-details p {
+    font-size: 14px;
+  }
+
+  .gallery {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    padding: 20px;
+  }
+
+  .gallery a::after {
+    font-size: 13px;
+    padding: 5px 14px;
+  }
+}
+
+@media (min-width: 769px) {
+  .gallery {
+    grid-template-columns: repeat(10, 1fr);
+  }
+}
+/* company info */
+.about-us{
+  background-color: transparent;
+}
+.links{
+  text-align: center;
+}

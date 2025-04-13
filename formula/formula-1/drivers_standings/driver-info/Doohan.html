@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Driver Showcase</title>
+  <link rel="stylesheet" href="driver-info.css" />
+</head>
+<body>
+  <div class="container">
+    <!-- Top Driver Image -->
+    <div class="top-driver">
+      <img id="topDriver" src="../drivers_pics/doohan.avif" alt="Top Driver" class="driver-img top-img"/>
+    </div>
+
+    <!-- Driver Details -->
+    <div class="driver-details">
+      <h2>Jack Doohan</h2>
+            <p>
+info available soon.
+      </p>
+    </div>
+  </div><br>
+
+  <!-- Other Drivers Gallery -->
+  <div class="gallery" id="driverGallery">
+    <a href="../driver-info/Albon.html" data-name="Albon"><img src="../drivers_pics/albon.avif" class="gallery-img" /></a>
+    <a href="../driver-info/Alonso.html" data-name="Alonso"><img src="../drivers_pics/alonso.avif" class="gallery-img" /></a>
+    <a href="../driver-info/Bearman.html" data-name="Bearman"><img src="../drivers_pics/bearman.avif" class="gallery-img" /></a>
+    <a href="../driver-info/Bortoleto.html" data-name="Bortoleto"><img src="../drivers_pics/bortoleto.avif" class="gallery-img" /></a>
+    <a href="../driver-info/Carlos.html" data-name="Carlos"><img src="../drivers_pics/sainz.avif" class="gallery-img" /></a>
+    <a href="../driver-info/Charles.html" data-name="Charles"><img src="../drivers_pics/leclerc.avif" class="gallery-img" /></a>
+    <a href="../driver-info/Doohan.html" data-name="Doohan"><img src="../drivers_pics/doohan.avif" class="gallery-img" /></a>
+    <a href="../driver-info/Gasly.html" data-name="Gasly"><img src="../drivers_pics/gasly.avif" class="gallery-img" /></a>
+    <a href="../driver-info/George.html" data-name="George"><img src="../drivers_pics/russell.avif" class="gallery-img" /></a>
+    <a href="../driver-info/Isack.html" data-name="Isack"><img src="../drivers_pics/hadjar.avif" class="gallery-img" /></a>
+    <a href="../driver-info/Kimi.html" data-name="Kimi"><img src="../drivers_pics/antonelli.avif" class="gallery-img" /></a>
+    <a href="../driver-info/Lance.html" data-name="Lance"><img src="../drivers_pics/stroll.avif" class="gallery-img" /></a>
+    <a href="../driver-info/Lawson.html" data-name="Lawson"><img src="../drivers_pics/lawson-racing-bulls.avif" class="gallery-img" /></a>
+    <a href="../driver-info/Lewis.html" data-name="Lewis"><img src="../drivers_pics/hamilton.avif" class="gallery-img" /></a>
+    <a href="../driver-info/Lando.html" data-name="Lando"><img src="../drivers_pics/norris.avif" class="gallery-img" /></a>
+    <a href="../driver-info/Max.html" data-name="Max"><img src="../drivers_pics/verstappen.avif" class="gallery-img" /></a>
+    <a href="../driver-info/Nico.html" data-name="Nico"><img src="../drivers_pics/hulkenberg.avif" class="gallery-img" /></a>
+    <a href="../driver-info/Ocon.html" data-name="Ocon"><img src="../drivers_pics/ocon.avif" class="gallery-img" /></a>
+    <a href="../driver-info/Piastri.html" data-name="Piastri"><img src="../drivers_pics/piastri.avif" class="gallery-img" /></a>
+    <a href="../driver-info/Yuki.html" data-name="Yuki"><img src="../drivers_pics/tsunoda.avif" class="gallery-img" /></a>
+</div>
+<br>
+<div class="about-us">
+  <p style="color: white;text-align: center;"><strong>follow us</strong></p>
+  <br>
+  <div class="links">
+    <a href="https://x.com/motorsport_X"><img src="x.png"></a>&nbsp;
+    <a href="https://www.instagram.com/motorsport_exclusive/?hl=en"><img src="instagram.png"></a>&nbsp;
+    <a href="https://www.facebook.com/profile.php?id=61572796532524&mibextid=ZbWKwL"><img src="facebook.png"></a>
+
+  </div>
+</div>
+  <script>
+    // Compare image src of top driver with all gallery images
+    const topSrc = document.getElementById("topDriver").src;
+    const galleryImgs = document.querySelectorAll(".gallery-img");
+
+    galleryImgs.forEach(img => {
+      if (img.src === topSrc) {
+        img.classList.add("same-as-top");
+      }
+    });
+  </script>
+</body>
+</html>
