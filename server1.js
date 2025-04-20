@@ -19,7 +19,7 @@ if (!fs.existsSync('./uploads')) {
 }
 
 // MongoDB connection
-mongoose.connect('mongodb+srv://your-username:your-password@your-cluster.mongodb.net/?retryWrites=true&w=majority&appName=your-appname')
+mongoose.connect('mongodb+srv://knvknitheshvinny:R13dHeKlvKWSUgJC@cluster0.umwrdva.mongodb.net/?retryWrites=true&w=majority')  
   .then(() => console.log('✅ Connected to MongoDB Atlas'))
   .catch(err => console.error('❌ MongoDB Connection Error:', err));
 
