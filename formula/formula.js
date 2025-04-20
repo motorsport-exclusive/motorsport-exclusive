@@ -5,7 +5,7 @@ const modalTitle = document.getElementById('modalTitle');
 const modalContent = document.getElementById('modalContent');
 
 // Backend URL (Render link)
-const backendURL = 'https://motorsportexclusive-api.onrender.com';
+const backendURL = 'https://motorsport-exclusive.onrender.com';
 
 if (newsContainer) {
   async function fetchArticles() {
