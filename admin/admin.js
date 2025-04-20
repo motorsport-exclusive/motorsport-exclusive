@@ -1,8 +1,10 @@
 const uploadForm = document.getElementById('uploadForm');
 const articleList = document.getElementById('articleList');
 
-// Your backend URL on Render
-const backendURL = 'https://your-backend-app.onrender.com'; // <-- change to your real URL
+// Automatically detect backend URL (local or deployed)
+const backendURL = window.location.hostname.includes('localhost')
+  ? 'http://localhost:5000'
+  : 'https://your-backend-app.onrender.com'; // CHANGE this to your real Render URL
 
 // Upload new article
 uploadForm.addEventListener('submit', async (e) => {
@@ -80,5 +82,3 @@ async function deleteArticle(id) {
 
 // Load articles on page start
 loadArticles();
-const cors = require('cors');
-app.use(cors());
