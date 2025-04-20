@@ -1,19 +1,15 @@
 const uploadForm = document.getElementById('uploadForm');
 const articleList = document.getElementById('articleList');
 
-// Automatically detect backend URL (local or deployed)
-const backendURL = 'https://your-backend-app.onrender.com';
+// Auto backend URL
+const backendURL = window.location.hostname.includes('localhost')
   ? 'http://localhost:5000'
-  : 'https://your-backend-app.onrender.com'; // CHANGE this to your real Render URL
+  : 'https://your-backend-name.onrender.com'; // CHANGE here
 
-// Upload new article
+// Upload article
 uploadForm.addEventListener('submit', async (e) => {
   e.preventDefault();
-
-  const formData = new FormData();
-  formData.append('title', document.getElementById('title').value);
-  formData.append('content', document.getElementById('content').value);
-  formData.append('image', document.getElementById('image').files[0]);
+  const formData = new FormData(uploadForm);
 
   try {
     const response = await fetch(`${backendURL}/api/articles`, {
@@ -21,7 +17,8 @@ uploadForm.addEventListener('submit', async (e) => {
       body: formData,
     });
 
-    if (response.ok) {
+    const data = await response.json();
+    if (data.success) {
       alert('Article uploaded successfully!');
       uploadForm.reset();
       loadArticles();
@@ -34,15 +31,12 @@ uploadForm.addEventListener('submit', async (e) => {
   }
 });
 
-// Load existing articles
+// Load Articles
 async function loadArticles() {
   try {
-    articleList.innerHTML = ''; // Clear previous
+    articleList.innerHTML = '';
     const res = await fetch(`${backendURL}/api/articles`);
     const articles = await res.json();
-
-    // Sort by newest first
-    articles.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
 
     articles.forEach(article => {
       const div = document.createElement('div');
@@ -50,7 +44,7 @@ async function loadArticles() {
       div.innerHTML = `
         <h3>${article.title}</h3>
         <small>Uploaded on: ${new Date(article.createdAt).toLocaleString()}</small>
-        <p>${article.content.substring(0, 100)}...</p>
+        <p>${article.content.slice(0, 100)}...</p>
         <button class="delete-btn" onclick="deleteArticle('${article._id}')">Delete</button>
       `;
       articleList.appendChild(div);
@@ -68,7 +62,8 @@ async function deleteArticle(id) {
         method: 'DELETE',
       });
 
-      if (res.ok) {
+      const data = await res.json();
+      if (data.success) {
         alert('Article deleted successfully!');
         loadArticles();
       } else {
@@ -80,5 +75,5 @@ async function deleteArticle(id) {
   }
 }
 
-// Load articles on page start
+// On page load
 loadArticles();
