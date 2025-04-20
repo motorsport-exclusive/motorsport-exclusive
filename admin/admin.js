@@ -2,7 +2,7 @@ const uploadForm = document.getElementById('uploadForm');
 const articleList = document.getElementById('articleList');
 
 // Automatically detect backend URL (local or deployed)
-const backendURL = window.location.hostname.includes('localhost')
+const backendURL = 'https://your-backend-app.onrender.com';
   ? 'http://localhost:5000'
   : 'https://your-backend-app.onrender.com'; // CHANGE this to your real Render URL
 
