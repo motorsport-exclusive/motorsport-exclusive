@@ -4,11 +4,13 @@ const modalImage = document.getElementById('modalImage');
 const modalTitle = document.getElementById('modalTitle');
 const modalContent = document.getElementById('modalContent');
 
-// Fetch and display articles
+// Backend URL
+const backendURL = 'https://your-backend-name.onrender.com'; // CHANGE here
+
 if (newsContainer) {
   async function fetchArticles() {
     try {
-      const res = await fetch('/api/articles');
+      const res = await fetch(`${backendURL}/api/articles`);
       const articles = await res.json();
 
       articles.forEach(article => {
@@ -33,7 +35,7 @@ if (newsContainer) {
   fetchArticles();
 }
 
-// Open Popup Modal
+// Popup Modal
 function openModal(article) {
   modal.style.display = "block";
   modalImage.src = article.imageUrl || '';
@@ -41,22 +43,20 @@ function openModal(article) {
   modalContent.innerText = article.content;
 }
 
-// Close Popup Modal
-
 function closeModal() {
-  document.getElementById('articleModal').style.display = "none";
+  modal.style.display = "none";
 }
-// Close popup when clicking outside modal-content
+
+// Click outside modal to close
 window.onclick = function(event) {
-  const modal = document.getElementById('articleModal');
   if (event.target == modal) {
     modal.style.display = "none";
   }
 }
 
-// Close popup on ESC key
+// ESC key to close
 document.addEventListener('keydown', function(event) {
   if (event.key === "Escape") {
-    document.getElementById('articleModal').style.display = "none";
+    modal.style.display = "none";
   }
 });
