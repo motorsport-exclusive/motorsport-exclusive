@@ -1,6 +1,9 @@
 const uploadForm = document.getElementById('uploadForm');
 const articleList = document.getElementById('articleList');
 
+// Your backend URL on Render
+const backendURL = 'https://your-backend-app.onrender.com'; // <-- change to your real URL
+
 // Upload new article
 uploadForm.addEventListener('submit', async (e) => {
   e.preventDefault();
@@ -11,7 +14,7 @@ uploadForm.addEventListener('submit', async (e) => {
   formData.append('image', document.getElementById('image').files[0]);
 
   try {
-    const response = await fetch('/api/articles', {
+    const response = await fetch(`${backendURL}/api/articles`, {
       method: 'POST',
       body: formData,
     });
@@ -33,7 +36,7 @@ uploadForm.addEventListener('submit', async (e) => {
 async function loadArticles() {
   try {
     articleList.innerHTML = ''; // Clear previous
-    const res = await fetch('/api/articles');
+    const res = await fetch(`${backendURL}/api/articles`);
     const articles = await res.json();
 
     // Sort by newest first
@@ -59,7 +62,7 @@ async function loadArticles() {
 async function deleteArticle(id) {
   if (confirm('Are you sure you want to delete this article?')) {
     try {
-      const res = await fetch(`/api/articles/${id}`, {
+      const res = await fetch(`${backendURL}/api/articles/${id}`, {
         method: 'DELETE',
       });
 
@@ -77,3 +80,5 @@ async function deleteArticle(id) {
 
 // Load articles on page start
 loadArticles();
+const cors = require('cors');
+app.use(cors());
