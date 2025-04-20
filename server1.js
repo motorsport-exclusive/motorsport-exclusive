@@ -12,43 +12,41 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static('public'));
 app.use('/uploads', express.static('uploads')); // Serve uploaded images
-
-// Serve HTML/CSS/JS (if needed)
-app.use(express.static(path.join(__dirname, '/')));
+app.use(express.static(path.join(__dirname, '/'))); // Serve HTML, CSS, JS
 
 // MongoDB Connection
 mongoose.connect('mongodb+srv://knvknitheshvinny:R13dHeKlvKWSUgJC@test.umwrdva.mongodb.net/?retryWrites=true&w=majority&appName=test')
   .then(() => console.log('✅ Connected to MongoDB Atlas!'))
-  .catch((err) => console.error('❌ Error connecting to MongoDB Atlas', err));
+  .catch((err) => console.error('❌ MongoDB connection error', err));
 
-// Create uploads folder if not exists
+// Create uploads folder if not exist
 if (!fs.existsSync('./uploads')) {
   fs.mkdirSync('./uploads');
 }
 
-// Article Model
+// Article Schema
 const articleSchema = new mongoose.Schema({
   title: { type: String, required: true },
   content: { type: String, required: true },
   imageUrl: { type: String }
-}, { timestamps: true }); // createdAt, updatedAt automatically
+}, { timestamps: true });
 
 const Article = mongoose.model('Article', articleSchema);
 
-// Multer setup for file uploads
+// Multer setup
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, 'uploads/');
   },
   filename: (req, file, cb) => {
-    cb(null, Date.now() + path.extname(file.originalname)); // Save with timestamp
+    cb(null, Date.now() + path.extname(file.originalname));
   }
 });
 const upload = multer({ storage });
 
 // API Routes
 
-// POST: Upload new article
+// Add Article
 app.post('/api/articles', upload.single('image'), async (req, res) => {
   try {
     const { title, content } = req.body;
@@ -64,7 +62,7 @@ app.post('/api/articles', upload.single('image'), async (req, res) => {
   }
 });
 
-// GET: Fetch all articles
+// Get Articles
 app.get('/api/articles', async (req, res) => {
   try {
     const articles = await Article.find().sort({ createdAt: -1 });
@@ -75,7 +73,7 @@ app.get('/api/articles', async (req, res) => {
   }
 });
 
-// DELETE: Delete article by ID
+// Delete Article
 app.delete('/api/articles/:id', async (req, res) => {
   try {
     const id = req.params.id;
@@ -85,7 +83,7 @@ app.delete('/api/articles/:id', async (req, res) => {
       return res.status(404).json({ error: 'Article not found' });
     }
 
-    // Delete image if it exists
+    // Delete image if exists
     if (article.imageUrl) {
       const imagePath = path.join(__dirname, article.imageUrl);
       if (fs.existsSync(imagePath)) {
@@ -102,7 +100,7 @@ app.delete('/api/articles/:id', async (req, res) => {
   }
 });
 
-// Start server
+// Start Server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`🚀 Server running at: http://localhost:${PORT}`);
