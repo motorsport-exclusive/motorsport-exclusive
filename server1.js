@@ -1,107 +1,92 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const cors = require('cors');
 const multer = require('multer');
+const cors = require('cors');
 const path = require('path');
 const fs = require('fs');
 
 const app = express();
 
-// Middleware
+// Middlewares
 app.use(cors());
 app.use(express.json());
 app.use(express.static('public'));
-app.use('/uploads', express.static('uploads')); // Serve uploaded images
-app.use(express.static(path.join(__dirname, '/'))); // Serve HTML/CSS/JS files directly
+app.use('/uploads', express.static('uploads'));
 
-// MongoDB Connection
-mongoose.connect('mongodb+srv://knvknitheshvinny:R13dHeKlvKWSUgJC@test.umwrdva.mongodb.net/?retryWrites=true&w=majority&appName=test')
-  .then(() => console.log('✅ Connected to MongoDB Atlas!'))
-  .catch((err) => console.error('❌ Error connecting to MongoDB Atlas', err));
-
-// Create uploads folder if not exists
+// Create uploads directory if not exists
 if (!fs.existsSync('./uploads')) {
   fs.mkdirSync('./uploads');
 }
 
-// Article Model
-const articleSchema = new mongoose.Schema({
-  title: { type: String, required: true },
-  content: { type: String, required: true },
-  imageUrl: { type: String }
-}, { timestamps: true }); // Automatically adds createdAt and updatedAt
+// MongoDB connection
+mongoose.connect('mongodb+srv://your-username:your-password@your-cluster.mongodb.net/?retryWrites=true&w=majority&appName=your-appname')
+  .then(() => console.log('✅ Connected to MongoDB Atlas'))
+  .catch(err => console.error('❌ MongoDB Connection Error:', err));
 
+// Mongoose model
+const articleSchema = new mongoose.Schema({
+  title: String,
+  content: String,
+  imageUrl: String,
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  }
+});
 const Article = mongoose.model('Article', articleSchema);
 
-// Multer setup for file uploads
+// Multer setup
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, 'uploads/');
   },
   filename: (req, file, cb) => {
-    cb(null, Date.now() + path.extname(file.originalname)); // Save with timestamp
+    cb(null, Date.now() + path.extname(file.originalname));
   }
 });
 const upload = multer({ storage });
 
 // API Routes
 
-// POST: Upload new article
+// Add article
 app.post('/api/articles', upload.single('image'), async (req, res) => {
   try {
     const { title, content } = req.body;
     const imageUrl = req.file ? `/uploads/${req.file.filename}` : '';
-
     const article = new Article({ title, content, imageUrl });
     await article.save();
-
-    res.status(201).json({ message: 'Article added successfully' });
+    res.status(201).json(article);
   } catch (err) {
-    console.error('❌ Error adding article:', err);
-    res.status(500).json({ error: 'Failed to add article' });
+    console.error('Upload error:', err);
+    res.status(500).send('Error saving article');
   }
 });
 
-// GET: Fetch all articles (newest first)
+// Get articles
 app.get('/api/articles', async (req, res) => {
   try {
     const articles = await Article.find().sort({ createdAt: -1 });
     res.json(articles);
   } catch (err) {
-    console.error('❌ Error fetching articles:', err);
-    res.status(500).json({ error: 'Failed to fetch articles' });
+    console.error('Fetch error:', err);
+    res.status(500).send('Error fetching articles');
   }
 });
 
-// DELETE: Delete article by ID
+// Delete article
 app.delete('/api/articles/:id', async (req, res) => {
   try {
-    const id = req.params.id;
-    const article = await Article.findById(id);
-
-    if (!article) {
-      return res.status(404).json({ error: 'Article not found' });
-    }
-
-    // Remove the image file if it exists
-    if (article.imageUrl) {
-      const imagePath = path.join(__dirname, article.imageUrl);
-      if (fs.existsSync(imagePath)) {
-        fs.unlinkSync(imagePath);
-      }
-    }
-
+    const { id } = req.params;
     await Article.findByIdAndDelete(id);
-
-    res.status(200).json({ message: 'Article deleted successfully' });
+    res.status(200).send('Article deleted successfully');
   } catch (err) {
-    console.error('❌ Error deleting article:', err);
-    res.status(500).json({ error: 'Failed to delete article' });
+    console.error('Delete error:', err);
+    res.status(500).send('Error deleting article');
   }
 });
 
-// Start Server
-const PORT = 5000;
+// Start server
+const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
-  console.log(`🚀 Server running at: http://localhost:${PORT}`);
+  console.log(`🚀 Server running at http://localhost:${PORT}`);
 });
