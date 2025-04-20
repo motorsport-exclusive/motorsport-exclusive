@@ -1,14 +1,15 @@
 const uploadForm = document.getElementById('uploadForm');
 const articleList = document.getElementById('articleList');
 
-// Auto backend URL
+// ✅ Corrected backend URL (auto detect localhost or Render)
 const backendURL = window.location.hostname.includes('localhost')
   ? 'http://localhost:5000'
-  : 'https://your-real-backend-name.onrender.com'; // Change this!!
+  : 'https://motorsportexclusive-api.onrender.com'; // <-- your real Render URL
 
-// Upload article
+// Upload new article
 uploadForm.addEventListener('submit', async (e) => {
   e.preventDefault();
+  
   const formData = new FormData(uploadForm);
 
   try {
@@ -19,22 +20,22 @@ uploadForm.addEventListener('submit', async (e) => {
 
     const data = await response.json();
     if (data.success) {
-      alert('Article uploaded successfully!');
+      alert('✅ Article uploaded successfully!');
       uploadForm.reset();
       loadArticles();
     } else {
-      alert('Failed to upload article');
+      alert('❌ Failed to upload article');
     }
   } catch (err) {
     console.error('Upload error:', err);
-    alert('Error uploading article.');
+    alert('⚠️ Error uploading article.');
   }
 });
 
-// Load articles
+// Load existing articles
 async function loadArticles() {
   try {
-    articleList.innerHTML = '';
+    articleList.innerHTML = ''; // Clear previous
     const res = await fetch(`${backendURL}/api/articles`);
     const articles = await res.json();
 
@@ -64,10 +65,10 @@ async function deleteArticle(id) {
 
       const data = await res.json();
       if (data.success) {
-        alert('Article deleted successfully!');
+        alert('✅ Article deleted successfully!');
         loadArticles();
       } else {
-        alert('Failed to delete article');
+        alert('❌ Failed to delete article');
       }
     } catch (err) {
       console.error('Delete error:', err);
@@ -75,5 +76,5 @@ async function deleteArticle(id) {
   }
 }
 
-// On page load
+// Auto load articles when page opens
 loadArticles();
