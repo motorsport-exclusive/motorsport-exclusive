@@ -4,7 +4,7 @@ const articleList = document.getElementById('articleList');
 // ✅ Corrected backend URL (auto detect localhost or Render)
 const backendURL = window.location.hostname.includes('localhost')
   ? 'http://localhost:5000'
-  : 'https://motorsportexclusive-api.onrender.com'; // <-- your real Render URL
+  : 'https://motorsport-exclusive.onrender.com'; // <-- your real Render URL
 
 // Upload new article
 uploadForm.addEventListener('submit', async (e) => {
