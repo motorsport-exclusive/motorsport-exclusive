@@ -12,7 +12,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static('public'));
 app.use('/uploads', express.static('uploads')); // Serve uploaded images
-app.use(express.static(path.join(__dirname, '/'))); // Serve HTML, CSS, JS
+app.use(express.static(path.join(__dirname, '/'))); // Serve HTML/CSS/JS files directly
 
 // MongoDB Connection
 mongoose.connect('mongodb+srv://knvknitheshvinny:R13dHeKlvKWSUgJC@test.umwrdva.mongodb.net/?retryWrites=true&w=majority&appName=test')
@@ -83,7 +83,6 @@ app.delete('/api/articles/:id', async (req, res) => {
       return res.status(404).json({ error: 'Article not found' });
     }
 
-    // Delete image if exists
     if (article.imageUrl) {
       const imagePath = path.join(__dirname, article.imageUrl);
       if (fs.existsSync(imagePath)) {
@@ -102,6 +101,6 @@ app.delete('/api/articles/:id', async (req, res) => {
 
 // Start Server
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
+app.listen(PORT, '0.0.0.0', () => {
   console.log(`🚀 Server running at: http://localhost:${PORT}`);
 });
