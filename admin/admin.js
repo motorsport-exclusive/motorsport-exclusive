@@ -4,7 +4,7 @@ const articleList = document.getElementById('articleList');
 // Auto backend URL
 const backendURL = window.location.hostname.includes('localhost')
   ? 'http://localhost:5000'
-  : 'https://your-backend-name.onrender.com'; // CHANGE here
+  : 'https://your-real-backend-name.onrender.com'; // Change this!!
 
 // Upload article
 uploadForm.addEventListener('submit', async (e) => {
@@ -31,7 +31,7 @@ uploadForm.addEventListener('submit', async (e) => {
   }
 });
 
-// Load Articles
+// Load articles
 async function loadArticles() {
   try {
     articleList.innerHTML = '';
