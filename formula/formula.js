@@ -5,7 +5,7 @@ const modalTitle = document.getElementById('modalTitle');
 const modalContent = document.getElementById('modalContent');
 
 // Backend URL
-const backendURL = 'https://your-backend-name.onrender.com'; // CHANGE here
+const backendURL = 'https://your-real-backend-name.onrender.com'; // Change this!!
 
 if (newsContainer) {
   async function fetchArticles() {
