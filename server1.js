@@ -7,24 +7,23 @@ const fs = require('fs');
 
 const app = express();
 
-// Middlewares
+// Middleware
 app.use(cors());
 app.use(express.json());
 app.use(express.static('public'));
-app.use('/uploads', express.static('uploads')); // Serve uploaded images
-app.use(express.static(path.join(__dirname, '/'))); // Serve HTML/CSS/JS files directly
+app.use('/uploads', express.static('uploads'));
 
-// MongoDB Connection
-mongoose.connect('mongodb+srv://knvknitheshvinny:R13dHeKlvKWSUgJC@test.umwrdva.mongodb.net/?retryWrites=true&w=majority&appName=test')
+// MongoDB Connection (✅ Updated)
+mongoose.connect('mongodb+srv://motorsportexclusive:jliw23NtCpvBYBge@motorsport.gvzwfh3.mongodb.net/?retryWrites=true&w=majority&appName=motorsport')
   .then(() => console.log('✅ Connected to MongoDB Atlas!'))
   .catch((err) => console.error('❌ MongoDB connection error', err));
 
-// Create uploads folder if not exist
+// Create uploads folder if it doesn't exist
 if (!fs.existsSync('./uploads')) {
   fs.mkdirSync('./uploads');
 }
 
-// Article Schema
+// Article model
 const articleSchema = new mongoose.Schema({
   title: { type: String, required: true },
   content: { type: String, required: true },
@@ -33,7 +32,7 @@ const articleSchema = new mongoose.Schema({
 
 const Article = mongoose.model('Article', articleSchema);
 
-// Multer setup
+// Multer storage setup
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, 'uploads/');
@@ -44,9 +43,7 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage });
 
-// API Routes
-
-// Add Article
+// Routes
 app.post('/api/articles', upload.single('image'), async (req, res) => {
   try {
     const { title, content } = req.body;
@@ -55,14 +52,13 @@ app.post('/api/articles', upload.single('image'), async (req, res) => {
     const article = new Article({ title, content, imageUrl });
     await article.save();
 
-    res.status(201).json({ success: true, message: 'Article added successfully', article });
+    res.status(201).json({ success: true, message: 'Article uploaded successfully', article });
   } catch (err) {
-    console.error('❌ Error adding article:', err);
-    res.status(500).json({ success: false, error: 'Failed to add article' });
+    console.error('❌ Error uploading article:', err);
+    res.status(500).json({ success: false, error: 'Failed to upload article' });
   }
 });
 
-// Get Articles
 app.get('/api/articles', async (req, res) => {
   try {
     const articles = await Article.find().sort({ createdAt: -1 });
@@ -73,15 +69,12 @@ app.get('/api/articles', async (req, res) => {
   }
 });
 
-// Delete Article
 app.delete('/api/articles/:id', async (req, res) => {
   try {
     const id = req.params.id;
     const article = await Article.findById(id);
 
-    if (!article) {
-      return res.status(404).json({ error: 'Article not found' });
-    }
+    if (!article) return res.status(404).json({ error: 'Article not found' });
 
     if (article.imageUrl) {
       const imagePath = path.join(__dirname, article.imageUrl);
@@ -99,8 +92,8 @@ app.delete('/api/articles/:id', async (req, res) => {
   }
 });
 
-// Start Server
+// Start server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, '0.0.0.0', () => {
-  console.log(`🚀 Server running at: http://localhost:${PORT}`);
+  console.log(`🚀 Server running at http://localhost:${PORT}`);
 });
