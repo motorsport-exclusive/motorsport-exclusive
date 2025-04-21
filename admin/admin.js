@@ -1,12 +1,10 @@
 const uploadForm = document.getElementById('uploadForm');
 const articleList = document.getElementById('articleList');
 
-// ✅ Corrected backend URL (auto detect localhost or Render)
-const backendURL = window.location.hostname.includes('localhost')
-  ? 'http://localhost:5000'
-  : 'https://motorsport-exclusive.onrender.com'; // <-- your real Render URL
+// Backend URL (Render)
+const backendURL = 'https://motorsport-exclusive.onrender.com';
 
-// Upload new article
+// Upload article
 uploadForm.addEventListener('submit', async (e) => {
   e.preventDefault();
   
@@ -32,10 +30,10 @@ uploadForm.addEventListener('submit', async (e) => {
   }
 });
 
-// Load existing articles
+// Load articles
 async function loadArticles() {
   try {
-    articleList.innerHTML = ''; // Clear previous
+    articleList.innerHTML = '';
     const res = await fetch(`${backendURL}/api/articles`);
     const articles = await res.json();
 
@@ -76,5 +74,5 @@ async function deleteArticle(id) {
   }
 }
 
-// Auto load articles when page opens
+// Load on page start
 loadArticles();
