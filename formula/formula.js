@@ -4,7 +4,7 @@ const modalImage = document.getElementById('modalImage');
 const modalTitle = document.getElementById('modalTitle');
 const modalContent = document.getElementById('modalContent');
 
-// Backend URL (Render link)
+// Backend URL
 const backendURL = 'https://motorsport-exclusive.onrender.com';
 
 if (newsContainer) {
@@ -35,7 +35,7 @@ if (newsContainer) {
   fetchArticles();
 }
 
-// Popup Modal
+// Popup modal functions
 function openModal(article) {
   modal.style.display = "block";
   modalImage.src = article.imageUrl || '';
@@ -47,14 +47,12 @@ function closeModal() {
   modal.style.display = "none";
 }
 
-// Click outside modal to close
 window.onclick = function(event) {
   if (event.target == modal) {
     modal.style.display = "none";
   }
 }
 
-// ESC key to close
 document.addEventListener('keydown', function(event) {
   if (event.key === "Escape") {
     modal.style.display = "none";
